@@ -27,7 +27,7 @@ module.exports = {
       },
       yearOfRelease: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.INTEGER
       },
       imgLink: {
         type: Sequelize.STRING

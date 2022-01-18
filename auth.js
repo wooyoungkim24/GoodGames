@@ -7,7 +7,6 @@ const loginUser = (req,res,next) =>{
     res.sessoin.auth = {userId: user.id};
 };
 
-//needs database User
 const restoreUser = async(req,res,next) =>{
     if(req.session.auth) {
         const { userId } = req.session.auth;
@@ -32,7 +31,7 @@ const restoreUser = async(req,res,next) =>{
 //authorization middleware
 const requireAuth = (req,res,next) =>{
     if(!res.locals.authenticated){
-        return res.redirect(/* place holder router when not logged in */)
+        return res.redirect(/*place holder router when not logged in */)
     }
     return next();
 }
