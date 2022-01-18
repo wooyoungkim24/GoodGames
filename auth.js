@@ -1,4 +1,4 @@
-const { user } = require("pg/lib/defaults");
+
 const db = require("./db/models");
 
 
