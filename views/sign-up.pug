@@ -1,0 +1,13 @@
+extends layout.pug
+
+block content
+  div(class="sign-up-container")
+    h2 Sign Up
+    form(class="sign-up-form")
+        label(for='username') Username
+        input(type='text' name='username' placeholder="Username")
+        include includes/auth-form-fields.pug
+        label(for='confirmedPassword') Confirm Password
+        input(type='password', name="confirmedPassword", placeholder='Password')
+        button(type='submit') Sign Up
+    a(href='/users/login') Already have an account? Log in here.
