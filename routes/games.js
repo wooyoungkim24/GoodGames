@@ -29,12 +29,12 @@ router.get('/games/:id(\\d+)', asyncHandler(async(req,res) =>{
     })
 }))
 
-// router.get('/games/add', requireAuth, csrfProtection, (req, res) => {
-//     const game = db.Games.build();
-//     res.render('game-add', {
+router.get('/games/add', requireAuth, csrfProtection, (req, res) => {
+    const game = db.Games.build();
+    res.render('game-add', {
 
-//     })
-// })
+    })
+})
 // router.post('/games/add', requireAuth, csrfProtection, gameAddValidators,
 //     asyncHandler(async (req, res) => {
 //         const {collectionsId, gameId} = req.body;
