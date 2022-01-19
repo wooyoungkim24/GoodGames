@@ -59,9 +59,12 @@ router.get('/', (req, res, next) => {
   res.send('respond with a resource');
 });
 
-router.get('/login', csrfProtection, (req, res, next) => {
+router.get('/login', csrfProtection, (req, res) => {
 
-  res.render('log-in', {csrfToken: req.csrfToken()});
+  res.render('log-in', {
+    title: "Log In",
+    email:"",
+    csrfToken: req.csrfToken()});
 });
 
 router.post('/login', loginValidators, csrfProtection, asyncHandler(async(req, res, next) => {
@@ -77,6 +80,7 @@ router.post('/login', loginValidators, csrfProtection, asyncHandler(async(req, r
       const passCompare = await bcrypt.compare(password, user.hashedPassword.toString());
       if(passCompare){
         //add user login function from auth.js
+        loginUser(req,res,user)
         return res.redirect('/');
       }
     }
@@ -87,21 +91,24 @@ router.post('/login', loginValidators, csrfProtection, asyncHandler(async(req, r
   }
 
   res.render('log-in', {
-    body: {
-      email
-    },
+    title: 'Log-In',
+    email,
+    errors,
     csrfToken: req.csrfToken()
   });
 
 }));
 
 router.get('/signup', (req, res, next) => {
-  res.render('sign-up', {csrfToken: req.csrfToken()});
+  res.render('sign-up', {
+    title: "Sign Up",
+    email: "",
+    csrfToken: req.csrfToken()});
 });
 
 
 
-router.post('/user/register', csrfProtection, signupValidator,
+router.post('/signup', csrfProtection, signupValidator,
   asyncHandler(async (req, res) => {
     const {
       email,
@@ -124,7 +131,7 @@ router.post('/user/register', csrfProtection, signupValidator,
       const errors = validatorErrors.array().map((error) => error.msg);
       res.render('sign-up', {
         title: 'Sign Up',
-        user,
+        email,
         errors,
         csrfToken: req.csrfToken(),
       });
@@ -132,6 +139,10 @@ router.post('/user/register', csrfProtection, signupValidator,
   }));
 
 
+  router.post('/logout', (req, res) => {
+    logoutUser(req, res);
+    res.redirect('/user/login');
+  });
 
 
 module.exports = router;

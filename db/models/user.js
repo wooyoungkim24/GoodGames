@@ -5,12 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     hashedPassword: DataTypes.STRING
   }, {});
   User.associate = function(models) {
-    User.hasMany(models.Review, { foreignKey: 'userId' });
-    User.belongsToMany(models.Collection, {
-      through: 'GroupOfCollection',
-      otherKey: 'collectionsId',
-      foreignKey: 'userId'
-    })
+    // associations can be defined here
   };
   return User;
 };

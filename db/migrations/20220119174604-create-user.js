@@ -1,36 +1,20 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Games', {
+    return queryInterface.createTable('Users', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      title: {
-        allowNull: false,
-        unique: true,
-        type: Sequelize.STRING(100)
-      },
-      description: {
-        allowNull: false,
-        type: Sequelize.TEXT
-      },
-      genre: {
+      email: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      publisher: {
+      hashedPassword: {
         allowNull: false,
-        type: Sequelize.STRING
-      },
-      yearOfRelease: {
-        allowNull: false,
-        type: Sequelize.INTEGER
-      },
-      imgLink: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING.BINARY
       },
       createdAt: {
         allowNull: false,
@@ -43,6 +27,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Games');
+    return queryInterface.dropTable('Users');
   }
 };

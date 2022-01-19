@@ -1,22 +1,27 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('GroupOfCollections', {
+    return queryInterface.createTable('Reviews', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      userId: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        references: { model: "Users" }
+      title: {
+        type: Sequelize.STRING
       },
-      collectionsId: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        references: { model: "Collections" }
+      reviewText: {
+        type: Sequelize.TEXT
+      },
+      rating: {
+        type: Sequelize.INTEGER
+      },
+      gameId: {
+        type: Sequelize.INTEGER
+      },
+      userId: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
@@ -29,6 +34,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('GroupOfCollections');
+    return queryInterface.dropTable('Reviews');
   }
 };
