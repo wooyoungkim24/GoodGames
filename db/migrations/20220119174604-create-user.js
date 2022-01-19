@@ -10,11 +10,7 @@ module.exports = {
       },
       email: {
         allowNull: false,
-        validate: {
-          isEmail: true
-        },
-        unique: true,
-        type: Sequelize.STRING(100)
+        type: Sequelize.STRING
       },
       hashedPassword: {
         allowNull: false,
