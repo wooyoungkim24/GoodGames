@@ -6,11 +6,11 @@ include utils.pug
 
 block content
   +validationErrorSummary(errors)
-  form(class='log-in-form' action='/sign-up' method='post')
+  form(class='log-in-form' action='/users/signup' method='post')
     input(type='hidden' name='_csrf' value=csrfToken)
-    +field('Username', 'username', username)
-    +field('Password', 'password', null, password)
-    +field('Confirm Password', 'confirmedPassword', null, confirmedPassword)
+    +field('Email', 'email', email)
+    +field('Password', 'password', null, 'password')
+    +field('Confirm Password', 'confirmPassword', null)
     div
       button(type='submit') Sign Up
       a(href='/') Cancel

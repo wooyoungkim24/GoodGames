@@ -1,6 +1,7 @@
+
 include utils.pug
 
-doctype html
+
 html
   head
       block head
@@ -12,7 +13,8 @@ html
         div(class="errors-container")
         h2.test Log In
         +validationErrorSummary(errors)
-        form(class="log-in-form")
+        form(class="log-in-form", action='/users/login' method="post" )
+          input(type="hidden" name="_csrf" value=csrfToken)
           +field('Email Address', 'email', null, 'email', 'Enter email', 'emailDiv')
           +field('Password', 'password', '', 'password', 'Enter password', 'passwordDiv')
           button(type='submit') Log In
