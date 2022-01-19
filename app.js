@@ -8,7 +8,7 @@ const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-
+const gamesRouter = require('./routes/games')
 const app = express();
 
 // view engine setup
@@ -35,7 +35,7 @@ app.use(
 // create Session table if it doesn't already exist
 store.sync();
 
-app.use('/', indexRouter);
+app.use('/', gamesRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler

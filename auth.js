@@ -31,7 +31,7 @@ const restoreUser = async(req,res,next) =>{
 //authorization middleware
 const requireAuth = (req,res,next) =>{
     if(!res.locals.authenticated){
-        return res.redirect(/*place holder router when not logged in */)
+        return res.redirect('/games')
     }
     return next();
 }

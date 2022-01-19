@@ -8,10 +8,14 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      gameId: {
+      name: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      userId: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: { model: "Games" }
+        references: {model:'Users'}
       },
       createdAt: {
         allowNull: false,

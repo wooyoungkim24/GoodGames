@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Reviews', {
+    return queryInterface.createTable('Games', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -10,25 +10,26 @@ module.exports = {
       },
       title: {
         allowNull: false,
-        type: Sequelize.STRING(255)
+        type: Sequelize.STRING
       },
-      reviewText: {
+      description: {
         allowNull: false,
         type: Sequelize.TEXT
       },
-      rating: {
+      genre: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      publisher: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      yearOfRelease: {
         allowNull: false,
         type: Sequelize.INTEGER
       },
-      gameId: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        references: { model: "Games" }
-      },
-      userId: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        references: { model: "Users" }
+      imgLink: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
@@ -41,6 +42,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Reviews');
+    return queryInterface.dropTable('Games');
   }
 };
