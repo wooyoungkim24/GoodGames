@@ -33,14 +33,14 @@ router.get('/games/add', requireAuth, csrfProtection, (req, res) => {
 
     })
 })
-router.post('/games/add', requireAuth, csrfProtection, gameAddValidators,
-    asyncHandler(async (req, res) => {
-        const {collectionsId, gameId} = req.body;
-        const collection = db.Collection.findByPk(collectionsId)
-        const collectionItem = db.Collected.build({
+// router.post('/games/add', requireAuth, csrfProtection, gameAddValidators,
+//     asyncHandler(async (req, res) => {
+//         const {collectionsId, gameId} = req.body;
+//         const collection = db.Collection.findByPk(collectionsId)
+//         const collectionItem = db.Collected.build({
 
-        })
-    }))
+//         })
+//     }))
 
 
 

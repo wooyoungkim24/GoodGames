@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
   Collected.associate = function(models) {
     // associations can be defined here
     Collected.belongsTo(models.Game, {foreignKey: "gameId"})
-    Collected.belongsTo(models.Collection, {foreignKey:"collectionId"})
+    Collected.belongsTo(models.Collection, {foreignKey:"collectionsId"})
 
   };
   return Collected;
