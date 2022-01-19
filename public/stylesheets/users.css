@@ -1,0 +1,50 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: black;
+}
+.log-in-container{
+    width: 382px;
+    overflow: hidden;
+    margin: 50px 50px;
+    padding: 80px;
+    background: #12e4e4;
+    border-radius: 15px ;
+}
+
+h2{
+    text-align: center;
+    color: #e41f11;
+    padding: 20px;
+}
+
+.emailDiv{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.passwordDiv{
+    display: flex;
+    justify-content: flex-start;
+}
+
+label{
+    color: black;
+    font-size: 17px;
+}
+
+#email{
+    width: 300px;
+    height: 30px;
+    border: none;
+    border-radius: 3px;
+    padding-left: 8px;
+}
+
+#password{
+    width: 300px;
+    height: 30px;
+    border: none;
+    border-radius: 3px;
+    padding-left: 8px;
+}
