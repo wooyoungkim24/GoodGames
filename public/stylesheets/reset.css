@@ -52,7 +52,7 @@ h1 {
 .signup-btn{
   border: 1px solid black;
   background-color: white;
-  border-radius: 0.5rem;
+  border-radius: 0;
   height: 2rem;
   margin: 0.2rem;
 }
