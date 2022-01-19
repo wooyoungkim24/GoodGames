@@ -1,0 +1,10 @@
+extends layout.pug
+
+block content
+    div(class="games-container")
+        each game in games
+            h2(class='game-name')= game.title
+            div(class='game-details')
+                div= game.yearOfRelease
+                div= game.publisher
+                div= game.genre

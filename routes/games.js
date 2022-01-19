@@ -12,17 +12,18 @@ router.get('/', (req,res) =>{
 })
 
 router.get('/games', asyncHandler(async(req,res) =>{
-    const games = await db.Games.findAll();
-    res.render('games-list', {
-
+    const games = await db.Game.findAll();
+    res.render('games', {
+        games,
+        title: "Games"
     })
 }))
 
 router.get('/games/:id(\\d+)', asyncHandler(async(req,res) =>{
     const gameId = parseInt(req.params.id, 10);
-    const game = await db.Games.findByPk(gameId)
-    res.render('game-page', {
-
+    const game = await db.Game.findByPk(gameId, {include: 'Reviews'})
+    res.render('game-single', {
+        game
     })
 }))
 
@@ -40,6 +41,9 @@ router.post('/games/add', requireAuth, csrfProtection, gameAddValidators,
 
         })
     }))
+
+
+
 
 
 
