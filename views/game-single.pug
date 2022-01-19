@@ -1,20 +1,42 @@
 extends layout.pug
+include utils.pug
 
 block content
-    div(class="games-container")
-        img(class='game-img' src=game.imgLink)
-        h2(class='game-name')= game.name
-        div(class='game-details')
-            +field("Collection", "collection", null, 'select', "Collection", "collection-select")
-            div= game.rating
-            div= game.yearOfRelease
-            div= game.publisher
-            div= game.genre
-        div(class='description-container')
-            p(class='despription-paragraph')= game.description
+    link(rel='stylesheet' href='/stylesheets/game-single.css')
+    div(class="game-container")
+        div(class="img-rate-coll-container")
+            img(class='game-img' src=game.imgLink)
+            div(class='collection-container')
+                label(for="collection") Collection
+                select(name="collection" value=body.collection)
+                    option(value='') --Add to collection--
+                    each collection in collections
+                        option(value=collection selected=(collection === body.collection))= collection
+            div(class='select-rating')
+                a(class="star off" href="#")
+                a(class="star off" href="#")
+                a(class="star off" href="#")
+                a(class="star off" href="#")
+                a(class="star off" href="#")
+        div(class='name-details-container')
+            h2(class='game-title')= game.title
+            div(class='game-details')
+                div(class="rating-container")
+                    a(class="star p10" href="#")
+                    a(class="star p10" href="#")
+                    a(class="star p10" href="#")
+                    a(class="star p10" href="#")
+                    a(class="star p10" href="#")
+                    span(class='rating')= game.rating
+                        a(class="reviews-link" href=`/games/${game.id}/reviews`) Reviews
+                div(class="detail publisher")= `Publisher: ${game.publisher}`
+                div(class="detail release-date")= `Released ${game.yearOfRelease}`
+                div(class="detail genre")= game.genre
+                div(class='description-container')
+                    p(class='despription-paragraph')= game.description
 
-    each review in reviews
-        h3= review.title
-        div= review.rating
-        div= review.name
-        p= review.description
+    //- each review in reviews
+    //-     h3= review.title
+    //-     div= review.rating
+    //-     div= review.name
+    //-     p= review.description
