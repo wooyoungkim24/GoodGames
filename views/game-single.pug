@@ -2,7 +2,7 @@ extends layout.pug
 
 block content
     div(class="games-container")
-        img(class='game-img' href=game.imgLink)
+        img(class='game-img' src=game.imgLink)
         h2(class='game-name')= game.name
         div(class='game-details')
             div= game.yearOfRelease

@@ -3,8 +3,7 @@ extends layout.pug
 block content
     div(class="games-container")
         each game in games
-            img(class='game-img' href=game.imgLink)
-            h2(class='game-name')= game.name
+            h2(class='game-name')= game.title
             div(class='game-details')
                 div= game.yearOfRelease
                 div= game.publisher
