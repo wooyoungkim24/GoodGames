@@ -1,13 +1,32 @@
+
+
 extends layout.pug
 
+include utils.pug
+
 block content
-  div(class="sign-up-container")
-    h2 Sign Up
-    form(class="sign-up-form")
-        label(for='email') Email
-        input(type='text' name='email' placeholder="Email")
-        include includes/auth-form-fields.pug
-        label(for='confirmPassword') Confirm Password
-        input(type='password', name="confirmPassword", placeholder='Password')
-        button(type='submit') Sign Up
-    a(href='/users/login') Already have an account? Log in here.
+  +validationErrorSummary(errors)
+  form(class='log-in-form' action='/users/signup' method='post')
+    input(type='hidden' name='_csrf' value=csrfToken)
+    +field('Email', 'email', email)
+    +field('Password', 'password', null, 'password')
+    +field('Confirm Password', 'confirmPassword', null)
+    div
+      button(type='submit') Sign Up
+      a(href='/') Cancel
+
+
+//- Previous Version:
+//- extends layout.pug
+
+//- block content
+//-   div(class="sign-up-container")
+//-     h2 Sign Up
+//-     form(class="sign-up-form")
+//-         label(for='email') Email
+//-         input(type='text' name='email' placeholder="Email")
+//-         include includes/auth-form-fields.pug
+//-         label(for='confirmPassword') Confirm Password
+//-         input(type='password', name="confirmPassword", placeholder='Password')
+//-         button(type='submit') Sign Up
+//-     a(href='/users/login') Already have an account? Log in here.

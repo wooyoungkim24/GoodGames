@@ -3,8 +3,8 @@ const db = require("./db/models");
 
 
 
-const loginUser = (req,res,next) =>{
-    res.sessoin.auth = {userId: user.id};
+const loginUser = (req,res,user) =>{
+    req.session.auth = {userId: user.id};
 };
 
 const restoreUser = async(req,res,next) =>{
