@@ -1,0 +1,14 @@
+*{
+    box-sizing: border-box;
+}
+
+.game-image{
+    height:200px;
+}
+
+.games-table, .games-table thead, .games-table tbody, .games-table td, .games-table th{
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    border: 3px solid purple;
+}

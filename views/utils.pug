@@ -8,7 +8,7 @@ mixin validationErrorSummary(errors)
           li= error
 
 mixin field(labelText, fieldName, fieldValue, fieldType = 'text', placeholder = null, className)
-  div(class=className)
+  div(class= className)
     label(for=fieldName)= labelText
     if fieldType === 'textarea'
       textarea(id=fieldName name=fieldName rows='5')= fieldValue

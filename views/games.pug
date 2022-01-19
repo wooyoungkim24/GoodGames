@@ -1,10 +1,33 @@
 extends layout.pug
 
+//- block content
+//-     div(class="games-container")
+//-         each game in games
+//-             h2(class='game-name')= game.title
+//-             div(class='game-details')
+//-                 div= game.yearOfRelease
+//-                 div= game.publisher
+//-                 div= game.genre
+
+
 block content
+    h1= "Games"
     div(class="games-container")
-        each game in games
-            h2(class='game-name')= game.title
-            div(class='game-details')
-                div= game.yearOfRelease
-                div= game.publisher
-                div= game.genre
+        table(class="games-table")
+            thead
+                tr
+                    th= "Title"
+                    th= "Description"
+                    th= "Genre"
+                    th= "Creator"
+                    th= "Year Released"
+            tbody
+                tr
+                    each game in games
+                        td= game.title
+                            img(src= game.imgLink class="game-image")
+
+                        td= game.description
+                        td= game.genre
+                        td= game.publisher
+                        td= game.yearOfRelease
