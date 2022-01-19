@@ -8,8 +8,8 @@ module.exports = {
 
       Example:
       */
-   return queryInterface.bulkInsert("GroupOfCollections", [{
-    userId: 1,
+   return queryInterface.bulkInsert("Collecteds", [{
+    gameId: 1,
     collectionsId:1,
     createdAt: new Date(),
     updatedAt: new Date()
@@ -23,6 +23,6 @@ module.exports = {
 
       Example:
       */
-   return queryInterface.bulkDelete('GroupOfCollections', null, {});
+   return queryInterface.bulkDelete('Collecteds', null, {});
   }
 };

@@ -1,15 +1,13 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Collection = sequelize.define('Collection', {
-    gameId: DataTypes.INTEGER
+    name: DataTypes.STRING,
+    userId: DataTypes.INTEGER
   }, {});
   Collection.associate = function(models) {
-    Collection.belongsTo(models.Game, { foreignKey: 'gameId' });
-    Collection.belongsToMany(models.User, {
-      through: 'GroupOfCollection',
-      otherKey: 'userId',
-      foreignKey: 'groupOfCollectionsId'
-    })
+    // associations can be defined here
+    Collection.belongsTo(models.User, {foreignKey: "userId"})
+    Collection.hasMany(models.Collected, {foreignKey: "collectionId"})
   };
   return Collection;
 };
