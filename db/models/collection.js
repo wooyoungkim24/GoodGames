@@ -10,4 +10,4 @@ module.exports = (sequelize, DataTypes) => {
     Collection.hasMany(models.Collected, {foreignKey: "collectionId"})
   };
   return Collection;
-};
+}; 
