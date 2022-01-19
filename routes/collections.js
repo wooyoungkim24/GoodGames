@@ -13,7 +13,6 @@ router.get('/', asyncHandler(async(req,res) =>{
     // console.log(currentUser)
     //get collections belonging to current user logged in
     const collections = await db.Collection.findAll( { where: { userId: req.session.auth.userId} });
-
     res.render('collections-list', {
         collections,
     })
