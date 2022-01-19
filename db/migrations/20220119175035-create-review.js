@@ -9,19 +9,26 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       title: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       reviewText: {
+        allowNull: false,
         type: Sequelize.TEXT
       },
       rating: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
       gameId: {
-        type: Sequelize.INTEGER
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {model: 'Games'}
       },
       userId: {
-        type: Sequelize.INTEGER
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {model: 'Users'}
       },
       createdAt: {
         allowNull: false,
