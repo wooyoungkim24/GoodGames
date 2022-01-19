@@ -3,9 +3,10 @@ extends layout.pug
 block content
     div(class="games-container")
         each game in games
-            img(class='game-img' href=game.imgLink)
+            img(class='game-img' src=game.imgLink)
             h2(class='game-name')= game.name
             div(class='game-details')
                 div= game.yearOfRelease
                 div= game.publisher
                 div= game.genre
+            +field("Collection", "collection", null, 'select', "Collection", "collection-select")

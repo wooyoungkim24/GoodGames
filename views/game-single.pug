@@ -5,7 +5,16 @@ block content
         img(class='game-img' href=game.imgLink)
         h2(class='game-name')= game.name
         div(class='game-details')
+            +field("Collection", "collection", null, 'select', "Collection", "collection-select")
+            div= game.rating
             div= game.yearOfRelease
             div= game.publisher
             div= game.genre
         div(class='description-container')
+            p(class='despription-paragraph')= game.description
+
+    each review in reviews
+        h3= review.title
+        div= review.rating
+        div= review.name
+        p= review.description
