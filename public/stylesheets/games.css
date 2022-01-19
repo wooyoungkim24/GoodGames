@@ -4,11 +4,21 @@
 
 .game-image{
     height:200px;
+    width: 250px;
 }
 
-.games-table, .games-table thead, .games-table tbody, .games-table td, .games-table th{
-    table-layout: fixed;
-    width: 100%;
-    border-collapse: collapse;
-    border: 3px solid purple;
+.games-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 0px;
+}
+
+.games-container > div{
+    width: 250px;
+
+}
+.description{
+    height: 100px;
+    overflow: hidden;
 }
