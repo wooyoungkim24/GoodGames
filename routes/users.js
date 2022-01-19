@@ -17,7 +17,7 @@ const signupValidator = [
     .isEmail()
     .withMessage('Please enter a valid email address')
     .custom((email) => {
-      return db.User.findOne({ where: { emailAddress: email } })
+      return db.User.findOne({ where: { email } })
         .then( ( user ) => {
           if ( user ) {
             return Promise.reject('This Email is already taken');
@@ -69,6 +69,7 @@ router.get('/login', csrfProtection, (req, res) => {
 
 router.post('/login', loginValidators, csrfProtection, asyncHandler(async(req, res, next) => {
   const {email, password} = req.body;
+  console.log(email, password)
 
   const validatorErrors = validationResult(req);
   const errors = [];
@@ -99,11 +100,12 @@ router.post('/login', loginValidators, csrfProtection, asyncHandler(async(req, r
 
 }));
 
-router.get('/signup', (req, res, next) => {
+router.get('/signup', csrfProtection, (req, res) => {
   res.render('sign-up', {
     title: "Sign Up",
     email: "",
-    csrfToken: req.csrfToken()});
+    csrfToken: req.csrfToken()
+  });
 });
 
 
@@ -124,6 +126,7 @@ router.post('/signup', csrfProtection, signupValidator,
     if (validatorErrors.isEmpty()) {
       const hashedPassword = await bcrypt.hash(password, 10);
       user.hashedPassword = hashedPassword;
+      console.log("test")
       await user.save();
       loginUser(req, res, user);
       res.redirect('/');
