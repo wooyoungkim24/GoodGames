@@ -1,0 +1,19 @@
+
+.emailDiv{
+    display: flex;
+    justify-content: flex-start;
+    margin: auto;
+}
+.passwordDiv{
+    display: flex;
+    justify-content: flex-start;
+    margin: auto;
+}
+
+#email{
+    margin-left: 10px;
+}
+
+#password{
+    margin-left: 10px;
+}
