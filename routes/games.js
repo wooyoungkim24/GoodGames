@@ -23,7 +23,9 @@ router.get('/games/:id(\\d+)', asyncHandler(async(req,res) =>{
     const gameId = parseInt(req.params.id, 10);
     const game = await db.Game.findByPk(gameId, {include: 'Reviews'})
     res.render('game-single', {
-        game
+        game,
+        body: {},
+        collections: ['Have Played', 'Playing', 'Want to Play']
     })
 }))
 

@@ -34,7 +34,7 @@ body{
   .signup-btn{
     border: 1px solid white;
     background-color: black;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     height: 2.5rem;
     margin: 0.2rem;
   }
