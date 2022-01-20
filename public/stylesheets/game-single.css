@@ -1,5 +1,6 @@
 .game-img {
-    width: 20rem;
+    width: 400px;
+    height: 300px;
 }
 
 .game-container {
@@ -50,9 +51,10 @@ select {
     margin:0.2rem;
 }
 
-.description {
+.description-single{
     font-size: 1rem;
     margin: 1rem 0 0.5rem;
+
 }
 
 .description-paragraph {
@@ -117,3 +119,24 @@ select {
     font-size: 0;
     background-size: 25px;
 } */
+
+.individual-review{
+    width: 40%;
+    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+}
+.review-container{
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+}
+.review-content{
+    text-align:left;
+}
+.review-header{
+    color: black;
+    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.review-text{
+    margin-left: 8%;
+}
