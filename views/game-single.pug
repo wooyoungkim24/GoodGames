@@ -44,6 +44,7 @@ block content
                 each collection in collectionItems
                     if collection.userId == review.userId
                         span(class="review-content") #{collection.name}!{' '}
+                span collections
                 h3(class="review-content") "#{review.title}"
                 div(class="review-text")
                     p(class="review-content") #{review.reviewText}
