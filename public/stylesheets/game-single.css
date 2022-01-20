@@ -1,5 +1,6 @@
 .game-img {
-    width: 20rem;
+    width: 400px;
+    height: 300px;
 }
 
 .game-container {
@@ -50,9 +51,10 @@ select {
     margin:0.2rem;
 }
 
-.description {
+.description-single{
     font-size: 1rem;
     margin: 1rem 0 0.5rem;
+
 }
 
 .description-paragraph {
@@ -79,19 +81,36 @@ select {
     /* height: 28px; */
 }
 
-.off {
-    background-image: url('../images/stars/star-off.png');
+.static-star {
+    /* cursor: pointer; */
+    color: black;
+    display: inline-block;
+    font-size: 2rem;
+    /* background-size: 25px; */
 }
 
-.on {
-    background-image: url('../images/stars/star-on.png');
+.select-rating {
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    display: flex;
+    justify-content: center;
+}
+.select-rating > span {
+    display: inline-block;
+    position: relative;
+    /* width: 1rem; */
+}
+.star-rating {
+    font-size: 2rem;
 }
 
-.p10 {
-    background-image: url('../images/stars/star-10.png');
+.select-rating > span:hover:before,
+.select-rating > span:hover ~ span:before {
+    content: "\2605";
+    position: absolute;
 }
 
-.star {
+/* .star {
     cursor: pointer;
     background-repeat: no-repeat;
     display: inline-block;
@@ -99,14 +118,25 @@ select {
     width: 28px;
     font-size: 0;
     background-size: 25px;
-}
+} */
 
-.static-star {
-    /* cursor: pointer; */
-    background-repeat: no-repeat;
-    display: inline-block;
-    height: 28px;
-    width: 28px;
-    font-size: 0;
-    background-size: 25px;
+.individual-review{
+    width: 40%;
+    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+}
+.review-container{
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+}
+.review-content{
+    text-align:left;
+}
+.review-header{
+    color: black;
+    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.review-text{
+    margin-left: 8%;
 }

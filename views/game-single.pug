@@ -13,29 +13,41 @@ block content
                     each collection in collections
                         option(value=collection selected=(collection === body.collection))= collection
             div(class='select-rating')
-                a(class="star off" title="bad" href="#")
-                a(class="star off" title="not good" href="#")
-                a(class="star off" title="mediocre" href="#")
-                a(class="star off" title="good" href="#")
-                a(class="star off" title="pog" href="#")
+                span(class="star-rating") ☆
+                span(class="star-rating") ☆
+                span(class="star-rating") ☆
+                span(class="star-rating") ☆
+                span(class="star-rating") ☆
         div(class='name-details-container')
             h2(class='game-title')= game.title
             div(class='game-details')
                 div(class="rating-container")
-                    a(class="static-star p10" href="#")
-                    a(class="static-star p10" href="#")
-                    a(class="static-star p10" href="#")
-                    a(class="static-star p10" href="#")
-                    a(class="static-star p10" href="#")
+                    span(class="static-star") &#9733;
+                    span(class="static-star") &#9733;
+                    span(class="static-star") &#9733;
+                    span(class="static-star") &#9733;
+                    span(class="static-star") &#9733;
                     div(class='rating')= game.rating
                         a(class="reviews-link" href=`/games/${game.id}/reviews`) Reviews
                 div(class="detail publisher")= `Publisher: ${game.publisher}`
                 div(class="detail release-date")= `Released ${game.yearOfRelease}`
                 div(class="detail genre")= game.genre
                 div(class='description-container')
-                    h4(class='description') Description
+                    h4(class='description-single') Description
                     p(class='description-paragraph')= game.description
-    script(src="javascripts/game-single.js")
+    div(class="review-container")
+        h2(class="review-header")= "Reviews"
+        each review in reviews
+            div(class="individual-review")
+                h3(class="review-content") #{review.User.email} rated it: #{review.rating}/5
+                span(class="review-content") #{review.User.email} has added this game to their:!{' '}
+                each collection in collectionItems
+                    if collection.userId == review.userId
+                        span(class="review-content") #{collection.name}!{' '}
+                h3(class="review-content") "#{review.title}"
+                div(class="review-text")
+                    p(class="review-content") #{review.reviewText}
+    //- script(src="/javascripts/game-single.js")
 
     //- each review in reviews
     //-     h3= review.title

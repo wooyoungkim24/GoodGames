@@ -10,7 +10,7 @@ module.exports = {
       */
    return queryInterface.bulkInsert("Collections", [{
     userId:1,
-    name: "Favorites",
+    name: "Have Played",
     createdAt: new Date(),
     updatedAt: new Date()
   }], {})

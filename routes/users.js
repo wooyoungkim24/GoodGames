@@ -144,7 +144,7 @@ router.post('/signup', csrfProtection, signupValidator,
 
   router.post('/logout', (req, res) => {
     logoutUser(req, res);
-    res.redirect('/user/login');
+    res.redirect('/users/login');
   });
 
 
