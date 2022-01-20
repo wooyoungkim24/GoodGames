@@ -1,0 +1,18 @@
+extends layout.pug
+
+include utils.pug
+
+block content
+    h2= `Write a Review for ${title}`
+    form(class='create-review-form' action='/reviews' method='post')
+        +field("Title", 'review-title', title, 'text', "Title", "review-title")
+
+        select(id="review-rating" name="rating" value=rating)
+            option(value='') --Rate--
+            option(value=1 selected=(rating === 1))= '1 terrible'
+            option(value=2 selected=(rating === 2))= '2 not good'
+            option(value=3 selected=(rating === 3))= '3 mediocre'
+            option(value=4 selected=(rating === 4))= '4 good'
+            option(value=5 selected=(rating === 5))= '5 amazing'
+        +field(null, 'review-text', reviewText, 'textarea', 'Write your review...', 'review-text')
+        button(type='submit') Submit
