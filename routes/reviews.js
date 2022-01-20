@@ -21,28 +21,33 @@ const reviewValidation = [
         .withMessage("Please rate the game")
 ];
 
-router.get('/new', csrfProtection, asyncHandler(async(req, res, next) => {
-    const urlRaw = req.baseUrl;
-    const url = urlRaw.split("/")
-    const gameId = parseInt(url[2], 10)
-    const game = await db.Game.findByPk(gameId)
-    res.render('create-review', {game,csrfToken: req.csrfToken(), req});
-}))
+router.get('/create', csrfProtection, asyncHandler(async(req, res, next) => {
+    const url = req.baseUrl;
+    const gameId = parseInt(url.split('/')[2]);
+    const game = await db.Game.findByPk(gameId);
+    console.log(game.id);
 
-router.post('/', reviewValidation, requireAuth, asyncHandler(async (req, res, next) => {
+    res.render('create-review', {game, csrfToken: req.csrfToken()});
+}));
+
+router.post('/', reviewValidation, requireAuth, csrfProtection, asyncHandler(async (req, res, next) => {
     const userId = req.session.auth.userId;
+    const url = req.baseUrl;
+    const gameId = parseInt(url.split('/')[2]);
+    const game = await db.Game.findByPk(gameId);
 
-    const { title, reviewText, rating, gameId } = req.body;
-    const review = db.Review.build({title, reviewText, rating, gameId, userId});
+    const { title, reviewText, rating } = req.body;
+    const review = await db.Review.build({title, reviewText, rating, gameId, userId});
+
     console.log(req.body);
 
     const validatorErrors = validationResult(req);
-    const errors = [];
+    let errors = [];
 
     if(validatorErrors.isEmpty()){
-        const review = await db.Review.findOne( {where: { userId, gameId }})
+        const reviewCheck = await db.Review.findOne( {where: { userId, gameId }})
 
-        if(!review){
+        if(!reviewCheck){
             await review.save();
             res.redirect(`/games/${gameId}`);
         }
@@ -52,7 +57,7 @@ router.post('/', reviewValidation, requireAuth, asyncHandler(async (req, res, ne
         errors = validatorErrors.array().map((error) => error.msg);
     }
 
-    res.render('game-single')
+    res.render('create-review', {title, reviewText, rating, game, errors, csrfToken: req.csrfToken()})
 }));
 
 module.exports = router

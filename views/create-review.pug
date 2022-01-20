@@ -6,7 +6,7 @@ block content
     h2(class= "review-header")= `Write a Review for ${game.title}`
     +validationErrorSummary(errors)
     div(class="review-form-div")
-        form(class='create-review-form' action='/games/:id/reviews' method='post')
+        form(class='create-review-form' action=`/games/${game.id}/reviews` method='post')
             input(type="hidden" name="_csrf" value=csrfToken)
             +field("Review Title", 'review-title', reviewTitle, 'text', "Title", "review-title")
 
