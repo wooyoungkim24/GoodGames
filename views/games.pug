@@ -11,14 +11,17 @@ extends layout.pug
 
 
 block content
-    h1= "Games"
+    div(class="headerGames")
+        h1= "Popular Games"
     div(class="games-container")
         each game in games
-            div(id= game.title)
+            div(id= "overallGame")
                 div(class="imageDiv")
-                    img(src= game.imgLink class="game-image")
-                div(class="title") #{game.title}
-                div(class="description") #{game.description}
+                    a(href=`/games/${game.id}`)
+                        img(src= game.imgLink class="game-image" id="hoverTarget")
+                div(class="gameTitle")
+                    a(href=`/games/${game.id}` class="gameTitleLink" id="hoverTarget") #{game.title}
+                //- div(class="description") #{game.description}
                 div(class="pub") #{game.publisher}
                 div(class="yOR") #{game.yearOfRelease}
 

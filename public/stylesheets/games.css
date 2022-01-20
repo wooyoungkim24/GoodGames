@@ -3,8 +3,15 @@
 }
 
 .game-image{
-    height:200px;
-    width: 250px;
+    height:300px;
+    width: 400px;
+    border-radius: 10px;
+}
+#overallGame:hover .gameTitleLink{
+    text-decoration: underline;
+}
+#overallGame:hover .game-image{
+    transform: scale(1.05);
 }
 
 .games-container{
@@ -15,10 +22,41 @@
 }
 
 .games-container > div{
-    width: 250px;
+    width: 400px;
+    margin-left: 3px;
+    margin-right: 3px;
 
 }
 .description{
-    height: 100px;
+    height: 90px;
     overflow: hidden;
+}
+
+
+.pub{
+    font-family: Copernicus, "Libre Baskerville", Georgia, serif;
+    font-size:20px
+}
+.yOR{
+    font-family: "Copernicus", "Libre Baskerville", Georgia, serif;
+    font-size:20px;
+    margin-bottom: 3px;
+}
+
+.gameTitle{
+    font-family: "Copernicus", "Libre Baskerville", Georgia, serif;
+    font-size: 22px;
+    font-weight: bold;
+    height: 30px;
+    margin-top: 7px;
+    margin-bottom: 5px;
+}
+.gameTitleLink{
+    text-decoration: none;
+    color: black;
+}
+.headerGames{
+    font-family: "Copernicus", "Libre Baskerville", Georgia, serif;
+    display: flex;
+    justify-content: center;
 }

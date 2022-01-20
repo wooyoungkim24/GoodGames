@@ -17,7 +17,7 @@ module.exports = {
    return queryInterface.bulkInsert('Games', [
      {title: "Skyrim", description: skyrimDesc, genre:"RPG", publisher: "Bethesda Softworks", yearOfRelease: 2016, imgLink: skyrimLink, createdAt: new Date(),updatedAt: new Date()},
      {title: "God of War 4", description: godOfWarDesc, genre:"Adventure", publisher: "Santa Monica Studio", yearOfRelease: 2022, imgLink: godOfWarLink, createdAt: new Date(),updatedAt: new Date()},
-     {title: "Valorant", description: valorantDesc, genre:"Tactical Shooter", publisher: "RIOT", yearOfRelease: 2020, imgLink: valorantLink, createdAt: new Date(),updatedAt: new Date()},
+     {title: "Valorant", description: valorantDesc, genre:"Tactical Shooter", publisher: "RIOT Games", yearOfRelease: 2020, imgLink: valorantLink, createdAt: new Date(),updatedAt: new Date()},
    ],{});
   },
 
