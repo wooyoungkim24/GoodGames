@@ -1,0 +1,48 @@
+.review-form-div{
+    display:flex;
+    width: 50%;
+    margin-left:40%;
+    flex-direction: column;
+    justify-content: space-around;
+    font-family: "Merriweather", "Georgia", serif;
+}
+#review-text{
+    font-family: "Merriweather", "Georgia", serif;
+    width:auto;
+    height:30rem;
+    resize:vertical;
+    margin-top:8px;
+    margin-bottom: 10px;
+}
+
+/* .review-title{
+    margin-bottom:5px;
+} */
+.review-text{
+    display:flex;
+    flex-direction: column;
+
+}
+#review-rating{
+    margin-bottom:10px;
+    margin-top: 10px;
+    font-family: "Merriweather", "Georgia", serif;
+}
+#review-title{
+    margin-left: 40px;
+    font-family: "Merriweather", "Georgia", serif;
+    width: 300px;
+    height:30px;
+}
+
+input,select,textarea{
+    border-radius: 5px;
+}
+
+button.submit{
+    background-color: #F4F1EA;
+    cursor: pointer;
+    border-radius: 5px;
+    width:50px;
+    height: 30px;
+}

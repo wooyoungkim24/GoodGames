@@ -21,10 +21,13 @@ const reviewValidation = [
         .withMessage("Please rate the game")
 ];
 
-router.get('/new', csrfProtection, (req, res, next) => {
-    console.log('hellooooooo');
-    res.render('create-review', {csrfToken: req.csrfToken()});
-})
+router.get('/new', csrfProtection, asyncHandler(async(req, res, next) => {
+    const urlRaw = req.baseUrl;
+    const url = urlRaw.split("/")
+    const gameId = parseInt(url[2], 10)
+    const game = await db.Game.findByPk(gameId)
+    res.render('create-review', {game,csrfToken: req.csrfToken(), req});
+}))
 
 router.post('/', reviewValidation, requireAuth, asyncHandler(async (req, res, next) => {
     const userId = req.session.auth.userId;

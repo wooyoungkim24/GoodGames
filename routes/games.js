@@ -30,7 +30,7 @@ router.get('/games/:id(\\d+)', asyncHandler(async(req,res) =>{
         reviews,
         collectionItems,
         body: {},
-        collections: ['Have Played', 'Playing', 'Want to Play', "Favorites"]
+        collections: ['Have Played', 'Playing', 'Want to Play']
     })
 }))
 

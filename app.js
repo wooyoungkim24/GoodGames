@@ -42,7 +42,7 @@ store.sync();
 app.use('/', gamesRouter)
 app.use('/users', usersRouter);
 app.use('/collections', collectionsRouter);
-app.use('/games/:id/reviews', reviewsRouter);
+app.use('/games/:id(\\d+)/reviews', reviewsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
