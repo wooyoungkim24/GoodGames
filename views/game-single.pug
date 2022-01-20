@@ -13,20 +13,20 @@ block content
                     each collection in collections
                         option(value=collection selected=(collection === body.collection))= collection
             div(class='select-rating')
-                a(class="star off" title="bad" href="#")
-                a(class="star off" title="not good" href="#")
-                a(class="star off" title="mediocre" href="#")
-                a(class="star off" title="good" href="#")
-                a(class="star off" title="pog" href="#")
+                span(class="star-rating") ☆
+                span(class="star-rating") ☆
+                span(class="star-rating") ☆
+                span(class="star-rating") ☆
+                span(class="star-rating") ☆
         div(class='name-details-container')
             h2(class='game-title')= game.title
             div(class='game-details')
                 div(class="rating-container")
-                    a(class="static-star p10" href="#")
-                    a(class="static-star p10" href="#")
-                    a(class="static-star p10" href="#")
-                    a(class="static-star p10" href="#")
-                    a(class="static-star p10" href="#")
+                    span(class="static-star") &#9733;
+                    span(class="static-star") &#9733;
+                    span(class="static-star") &#9733;
+                    span(class="static-star") &#9733;
+                    span(class="static-star") &#9733;
                     div(class='rating')= game.rating
                         a(class="reviews-link" href=`/games/${game.id}/reviews`) Reviews
                 div(class="detail publisher")= `Publisher: ${game.publisher}`
