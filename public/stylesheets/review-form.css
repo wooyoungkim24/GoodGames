@@ -1,12 +1,16 @@
+.review-header{
+    margin-left:38%;
+}
+
 .review-form-div{
     display:flex;
     width: 50%;
-    margin-left:40%;
+    margin-left:38%;
     flex-direction: column;
     justify-content: space-around;
     font-family: "Merriweather", "Georgia", serif;
 }
-#review-text{
+#reviewText{
     font-family: "Merriweather", "Georgia", serif;
     width:auto;
     height:30rem;
@@ -28,10 +32,10 @@
     margin-top: 10px;
     font-family: "Merriweather", "Georgia", serif;
 }
-#review-title{
-    margin-left: 40px;
+#reviewTitle{
+    margin-top: 5px;
     font-family: "Merriweather", "Georgia", serif;
-    width: 300px;
+    width: 60%;
     height:30px;
 }
 
@@ -45,4 +49,9 @@ button.submit{
     border-radius: 5px;
     width:50px;
     height: 30px;
+}
+.review-title{
+    display:flex;
+    flex-direction:column;
+
 }
