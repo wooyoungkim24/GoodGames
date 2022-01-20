@@ -1,11 +1,44 @@
 extends layout.pug
+include utils.pug
 
 block content
-    div(class="games-container")
-        img(class='game-img' src=game.imgLink)
-        h2(class='game-name')= game.name
-        div(class='game-details')
-            div= game.yearOfRelease
-            div= game.publisher
-            div= game.genre
-        div(class='description-container')
+    link(rel='stylesheet' href='/stylesheets/game-single.css')
+    div(class="game-container")
+        div(class="img-rate-coll-container")
+            img(class='game-img' src=game.imgLink)
+            div(class='collection-container')
+                label(id="collection-label" for="collection") Collection
+                select(id="collection-select" name="collection" value=body.collection)
+                    option(value='') --Add to collection--
+                    each collection in collections
+                        option(value=collection selected=(collection === body.collection))= collection
+            div(class='select-rating')
+                a(class="star off" title="bad" href="#")
+                a(class="star off" title="not good" href="#")
+                a(class="star off" title="mediocre" href="#")
+                a(class="star off" title="good" href="#")
+                a(class="star off" title="pog" href="#")
+        div(class='name-details-container')
+            h2(class='game-title')= game.title
+            div(class='game-details')
+                div(class="rating-container")
+                    a(class="static-star p10" href="#")
+                    a(class="static-star p10" href="#")
+                    a(class="static-star p10" href="#")
+                    a(class="static-star p10" href="#")
+                    a(class="static-star p10" href="#")
+                    div(class='rating')= game.rating
+                        a(class="reviews-link" href=`/games/${game.id}/reviews`) Reviews
+                div(class="detail publisher")= `Publisher: ${game.publisher}`
+                div(class="detail release-date")= `Released ${game.yearOfRelease}`
+                div(class="detail genre")= game.genre
+                div(class='description-container')
+                    h4(class='description') Description
+                    p(class='description-paragraph')= game.description
+    script(src="javascripts/game-single.js")
+
+    //- each review in reviews
+    //-     h3= review.title
+    //-     div= review.rating
+    //-     div= review.name
+    //-     p= review.description
