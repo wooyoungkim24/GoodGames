@@ -21,7 +21,7 @@ const reviewValidation = [
         .withMessage("Please rate the game")
 ];
 
-router.get('/create', csrfProtection, (req, res, next) => {
+router.get('/new', csrfProtection, (req, res, next) => {
     console.log('hellooooooo');
     res.render('create-review', {csrfToken: req.csrfToken()});
 })
