@@ -8,13 +8,14 @@ const { requireAuth } = require('../auth');
 const router = express.Router();
 
 router.get('/', asyncHandler(async(req,res) =>{
-    // const currentUser = await db.User.findByPk(req.session.auth.userId)
-    // console.log(req.session.auth.userId);
-    // console.log(currentUser)
-    //get collections belonging to current user logged in
-    const collections = await db.Collection.findAll( { where: { userId: req.session.auth.userId} });
+    const collections = await db.Collection.findAll( { where: { userId: req.session.auth.userId, name: 'Favorites'} });
+    // copy line 11 and change to each collection title eg. 'Favorites'
+
+    const userCollected = await db.Collected.findAll( { where: {collectionsId: collections[0].id}, include: 'Game' } );
     res.render('collections-list', {
         collections,
+        userCollected,
+        title: 'My Collections',
     })
 }));
 

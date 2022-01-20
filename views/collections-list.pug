@@ -1,12 +1,13 @@
-doctype html
-html
-  head
-      block head
-        title="Collections"
-        //- link(rel='stylesheet' href='/stylesheets/collection.css')
-  body
-    block content
-        h1 Your Collections
-        each collection in collections
-            div
-                h2=collection.name
+extends layout.pug
+include utils.pug
+
+  block content
+      h1 Your Collections
+      each collection in collections
+        div
+          h2
+            a(href=`/collections/${collection.id}`)=collection.name
+      each collected in userCollected
+        div
+          h2=collected.Game.title
+          img(src=collected.Game.imgLink)
