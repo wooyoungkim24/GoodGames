@@ -16,14 +16,6 @@ block content
         h1= "Popular Games"
     div(class="games-container")
         each game in games
-<<<<<<< HEAD
-            h2(class='game-name')= game.title
-            div(class='game-details')
-                div= game.yearOfRelease
-                div= game.publisher
-                div= game.genre
-            //- +field("Collection", "collection", null, 'select', "Collection", "collection-select")
-=======
             div(id= "overallGame")
                 div(class="imageDiv")
                     a(href=`/games/${game.id}`)
@@ -54,4 +46,3 @@ block content
         //-                 td= game.genre
         //-                 td= game.publisher
         //-                 td= game.yearOfRelease
->>>>>>> main
