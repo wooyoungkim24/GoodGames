@@ -102,6 +102,7 @@ select {
 }
 .star-rating {
     font-size: 2rem;
+    cursor: pointer;
 }
 
 .select-rating > span:hover:before,
