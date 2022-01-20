@@ -41,14 +41,15 @@ router.get('/', asyncHandler(async(req,res) =>{
 }));
 
 
-// router.get('/collections/:id(\\d+)', asyncHandler(async(req,res) =>{
-//     const collectionsId = parseInt(req.params.id, 10);
-//     const userCollection = await db.Collection.findAll(collectionsId)
+router.get('/collections/:id(\\d+)', asyncHandler(async(req,res) =>{
+    const collectionsId = parseInt(req.params.id, 10);
+    const userCollection = await db.Collection.findAll(collectionsId)
 
-//     res.render('collection-page', {
-
-//     })
-// }))
+    res.render('collection-page', {
+        collectionsId,
+        userCollection
+    })
+}))
 
 
 
