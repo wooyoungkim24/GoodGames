@@ -1,0 +1,27 @@
+
+h1{
+    text-align: center;
+}
+
+h2{
+    padding: 0px;
+    font-size: 2em;
+}
+
+.collections-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 0px;
+}
+
+img {
+    height:300px;
+    width: 400px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+img:hover{
+    transform: scale(1.05);
+}
