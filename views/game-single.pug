@@ -7,8 +7,8 @@ block content
         div(class="img-rate-coll-container")
             img(class='game-img' src=game.imgLink)
             div(class='collection-container')
-                label(for="collection") Collection
-                select(name="collection" value=body.collection)
+                label(id="collection-label" for="collection") Collection
+                select(id="collection-select" name="collection" value=body.collection)
                     option(value='') --Add to collection--
                     each collection in collections
                         option(value=collection selected=(collection === body.collection))= collection
@@ -22,11 +22,11 @@ block content
             h2(class='game-title')= game.title
             div(class='game-details')
                 div(class="rating-container")
-                    a(class="star p10" href="#")
-                    a(class="star p10" href="#")
-                    a(class="star p10" href="#")
-                    a(class="star p10" href="#")
-                    a(class="star p10" href="#")
+                    a(class="static-star p10" href="#")
+                    a(class="static-star p10" href="#")
+                    a(class="static-star p10" href="#")
+                    a(class="static-star p10" href="#")
+                    a(class="static-star p10" href="#")
                     div(class='rating')= game.rating
                         a(class="reviews-link" href=`/games/${game.id}/reviews`) Reviews
                 div(class="detail publisher")= `Publisher: ${game.publisher}`
@@ -34,7 +34,8 @@ block content
                 div(class="detail genre")= game.genre
                 div(class='description-container')
                     h4(class='description') Description
-                    p(class='despription-paragraph')= game.description
+                    p(class='description-paragraph')= game.description
+    script(src="javascripts/game-single.js")
 
     //- each review in reviews
     //-     h3= review.title

@@ -1,3 +1,3 @@
-const stars = document.querySelectorAll('.star');
+const stars = document.querySelector('.star');
 
-
+console.log(stars);
