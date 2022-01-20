@@ -8,13 +8,13 @@ const { requireAuth } = require('../auth');
 const router = express.Router();
 
 router.get('/', asyncHandler(async(req,res) =>{
-    // const currentUser = await db.User.findByPk(req.session.auth.userId)
-    // console.log(req.session.auth.userId);
-    // console.log(currentUser)
-    //get collections belonging to current user logged in
     const collections = await db.Collection.findAll( { where: { userId: req.session.auth.userId} });
+
+    //get all collected that belong to current user
+    const userCollected = await db.Collected.findAll( {  } )
     res.render('collections-list', {
         collections,
+        //userCollected,
     })
 }));
 
