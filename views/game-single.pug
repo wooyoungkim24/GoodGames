@@ -33,10 +33,20 @@ block content
                 div(class="detail release-date")= `Released ${game.yearOfRelease}`
                 div(class="detail genre")= game.genre
                 div(class='description-container')
-                    h4(class='description') Description
+                    h4(class='description-single') Description
                     p(class='description-paragraph')= game.description
     div(class="review-container")
-        h2= "Reviews"
+        h2(class="review-header")= "Reviews"
+        each review in reviews
+            div(class="individual-review")
+                h3(class="review-content") #{review.User.email} rated it: #{review.rating}/5
+                span(class="review-content") #{review.User.email} has added this game to their:!{' '}
+                each collection in collectionItems
+                    if collection.userId == review.userId
+                        span(class="review-content") #{collection.name}!{' '}
+                h3(class="review-content") "#{review.title}"
+                div(class="review-text")
+                    p(class="review-content") #{review.reviewText}
     //- script(src="/javascripts/game-single.js")
 
     //- each review in reviews
