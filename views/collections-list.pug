@@ -3,11 +3,29 @@ include utils.pug
 
   block content
       h1 Your Collections
-      each collection in collections
+      each collection in collectionsPast
         div(id='collection-link-container')
           h2(id='collection-name')
             a(href=`/collections/${collection.id}` id='collection-link')=collection.name
-      each collected in userCollected
+      each collected in userCollectedPast
+        div(id='game-container')
+          h2(id='game-title')=collected.Game.title
+          img(id='game-img' src=collected.Game.imgLink)
+
+      each collection in collectionsFuture
+        div(id='collection-link-container')
+          h2(id='collection-name')
+            a(href=`/collections/${collection.id}` id='collection-link')=collection.name
+      each collected in userCollectedFuture
+        div(id='game-container')
+          h2(id='game-title')=collected.Game.title
+          img(id='game-img' src=collected.Game.imgLink)
+
+      each collection in collectionsPresent
+        div(id='collection-link-container')
+          h2(id='collection-name')
+            a(href=`/collections/${collection.id}` id='collection-link')=collection.name
+      each collected in userCollectedPresent
         div(id='game-container')
           h2(id='game-title')=collected.Game.title
           img(id='game-img' src=collected.Game.imgLink)
