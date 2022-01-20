@@ -12,7 +12,7 @@ const collectionsRouter = require('./routes/collections');
 
 const gamesRouter = require('./routes/games')
 const app = express();
-
+const {restoreUser}= require('./auth')
 // view engine setup
 app.set('view engine', 'pug');
 
@@ -33,7 +33,7 @@ app.use(
     resave: false,
   })
 );
-
+app.use(restoreUser)
 // create Session table if it doesn't already exist
 store.sync();
 

@@ -12,7 +12,7 @@ module.exports = {
     title: 'League of Legends',
     description: "So much fun",
     genre: "MOBA",
-    publisher: "RIOT",
+    publisher: "RIOT Games",
     yearOfRelease: 2007,
     imgLink: "https://images.prismic.io/play-vs/6c423286e877921fb6659122b16e1845df833e1f_league-of-legends-hero-splash.jpg?auto=compress,format",
     createdAt: new Date(),

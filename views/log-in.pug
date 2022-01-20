@@ -1,21 +1,16 @@
+extends layout.pug
 
 include utils.pug
 
 
-html
-  head
-      block head
-        title="Login"
-        link(rel='stylesheet' href='/stylesheets/users.css')
-  body
-    block content
-      div(class="log-in-container")
-        div(class="errors-container")
-        h2.test Log In
-        +validationErrorSummary(errors)
-        form(class="log-in-form", action='/users/login' method="post" )
-          input(type="hidden" name="_csrf" value=csrfToken)
-          +field('Email Address', 'email', null, 'email', 'Enter email', 'emailDiv')
-          +field('Password', 'password', '', 'password', 'Enter password', 'passwordDiv')
-          button(type='submit') Log In
-        a(href='/users/signup') Don't have an account? Sign up here.
+block content
+  div(class="log-in-container")
+    div(class="errors-container")
+    h2.test Log In
+    +validationErrorSummary(errors)
+    form(class="log-in-form", action='/users/login' method="post" )
+      input(type="hidden" name="_csrf" value=csrfToken)
+      +field('Email Address', 'email', null, 'email', 'Enter email', 'emailDiv')
+      +field('Password', 'password', '', 'password', 'Enter password', 'passwordDiv')
+      button(type='submit') Log In
+    a(href='/users/signup') Don't have an account? Sign up here.

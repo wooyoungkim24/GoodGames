@@ -8,13 +8,13 @@ body{
     justify-content: space-between;
     align-items: center;
     height: 4rem;
-    background-color: black;
+    background-color: white;
     width: 100%;
     border-bottom: 1px solid white;
   }
 
   .home-logo {
-    color: white;
+    color: black;
     font-size: 3rem;
     margin: 1rem;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
