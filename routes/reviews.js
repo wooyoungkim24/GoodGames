@@ -8,7 +8,7 @@ const db = require('../db/models');
 const router = express.Router();
 
 const reviewValidation = [
-    check('title')
+    check('reviewTitle')
         .exists({checkFalsy: true})
         .withMessage('Please title your review')
         .isLength({max: 255})
@@ -36,8 +36,8 @@ router.post('/', reviewValidation, requireAuth, csrfProtection, asyncHandler(asy
     const gameId = parseInt(url.split('/')[2]);
     const game = await db.Game.findByPk(gameId);
 
-    const { title, reviewText, rating } = req.body;
-    const review = await db.Review.build({title, reviewText, rating, gameId, userId});
+    const { reviewTitle, reviewText, rating } = req.body;
+    const review = await db.Review.build({title:reviewTitle, reviewText, rating, gameId, userId});
 
     console.log(req.body);
 
@@ -57,7 +57,7 @@ router.post('/', reviewValidation, requireAuth, csrfProtection, asyncHandler(asy
         errors = validatorErrors.array().map((error) => error.msg);
     }
 
-    res.render('create-review', {title, reviewText, rating, game, errors, csrfToken: req.csrfToken()})
+    res.render('create-review', {reviewTitle, reviewText, rating, game, errors, csrfToken: req.csrfToken()})
 }));
 
 module.exports = router
