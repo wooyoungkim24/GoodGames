@@ -86,6 +86,7 @@ h2.game-title {
     width: 40%;
     /* font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif; */
     font-size: 14px;
+    border-bottom: 1px solid white;
 }
 .review-container{
     display:flex;
@@ -109,6 +110,7 @@ h2.game-title {
     font-size: 2rem;
 	height: 1em;
     line-height: 1em;
+    color: none;
 }
 
 .stars:before {
@@ -127,7 +129,7 @@ h2.game-title {
 
 .stars .percent:after {
     content: "\2605\2605\2605\2605\2605";
-    color: rgb(0, 0, 0);
+    color: rgb(255, 149, 41);
 }
 
 .personal-rating {
