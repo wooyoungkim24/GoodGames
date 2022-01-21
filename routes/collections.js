@@ -71,6 +71,47 @@ router.get('/:id(\\d+)', requireAuth, asyncHandler(async(req, res, next) =>{
 }))
 
 
+router.post('/update',requireAuth, asyncHandler(async(req, res,next) =>{
+    // const url = req.originalUrl;
+    // const collectionsId = parseInt(url.split('/')[2]);
+
+    const userId = req.session.auth.userId;
+
+    const { gameId,collection, collectionId } = req.body;
+    console.log(collectionId)
+    const collectedToReplaceTo = await db.Collected.findOne({where:{collectionsId:collectionId}});
+    const replacer = await db.Collection.findOne({where:{name:collection, userId}})
+    // console.log(replacer)
+    // console.log(collectionId)
+    // await collectedReplace.update({})
+    await collectedToReplaceTo.update({collectionsId:replacer.id})
+    res.redirect(`/games/${gameId}`)
+
+}))
+
+router.post('/add', requireAuth,
+  asyncHandler(async (req, res) => {
+    let userId= req.session.auth.userId
+    const {
+      collection,
+      gameId
+    } = req.body;
+    const findId = await db.Collection.findOne({where:{name:collection, userId}})
+
+    const newCollected = db.Collected.build({
+      collectionsId:findId.id,
+      gameId
+    });
+
+    // const validatorErrors = validationResult(req);
+
+    await newCollected.save();
+
+    res.redirect(`/games/${gameId}`)
+
+
+
+  }));
 
 
 

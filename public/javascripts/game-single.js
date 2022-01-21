@@ -1,3 +1,12 @@
-const stars = document.querySelector('.star');
+// const db = require('../db/models');
 
-console.log(stars);
+document.addEventListener("DOMContentLoaded", async () => {
+    try {
+
+        const option = document.querySelector("#remove")
+        option.remove();
+
+    } catch (e) {
+        console.error(e);
+    }
+});
