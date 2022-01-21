@@ -9,8 +9,9 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const collectionsRouter = require('./routes/collections');
-
+const reviewsRouter = require('./routes/reviews');
 const gamesRouter = require('./routes/games')
+
 const app = express();
 const {restoreUser}= require('./auth')
 // view engine setup
@@ -41,7 +42,11 @@ store.sync();
 app.use('/', gamesRouter)
 app.use('/users', usersRouter);
 app.use('/collections', collectionsRouter);
+app.use('/games/:id(\\d+)/reviews', reviewsRouter);
 
+app.all('*', (req, res) => {
+  res.redirect('/games');
+});
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
@@ -57,5 +62,6 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
 
 module.exports = app;

@@ -1,0 +1,21 @@
+extends layout.pug
+
+include utils.pug
+
+block content
+    div(class= "review-header-form")= `Write a Review for ${game.title}`
+    +validationErrorSummary(errors)
+    div(class="review-form-div")
+        form(class='create-review-form' action=`/games/${game.id}/reviews` method='post')
+            input(type="hidden" name="_csrf" value=csrfToken)
+            +field("Review Title", 'reviewTitle', reviewTitle, 'text', "Title", "review-title")
+
+            select(id="review-rating" name="rating" value=rating)
+                option(value='') --Rate--
+                option(value=1 selected=(rating === 1))= '1 terrible'
+                option(value=2 selected=(rating === 2))= '2 not good'
+                option(value=3 selected=(rating === 3))= '3 mediocre'
+                option(value=4 selected=(rating === 4))= '4 good'
+                option(value=5 selected=(rating === 5))= '5 amazing'
+            +field("What did you think?", 'reviewText', reviewText, 'textarea', 'Write your review...', 'review-text')
+            button(type='submit' class="submit") Post

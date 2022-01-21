@@ -4,16 +4,20 @@ html
       block head
         title=title
         link(rel='stylesheet' href='/stylesheets/index.css')
+        link(rel="shortcut icon" type="image/x-icon" href="http://localhost:8080/favicon.ico")
         link(rel='stylesheet' href='/stylesheets/navbar.css')
         link(rel='stylesheet' href='/stylesheets/users.css')
         link(rel='stylesheet' href='/stylesheets/games.css')
         link(rel='stylesheet' href='/stylesheets/collections.css')
+        link(rel='stylesheet' href='/stylesheets/review-form.css')
       div(class='nav-bar')
         a(class='home-logo' href='/') GG
         if locals.authenticated
-          span Welcome #{email}!
-          form(action='/users/logout' method='post')
-            button(class='logout-button' type='submit') Logout
+          span.user-greeting Welcome #{email}!
+          div.user-btns-container
+            button.collections-btn: a(class='collections-link' href='/collections') My Collections
+            form(action='/users/logout' method='post')
+              button(class='logout-button' type='submit') Logout
         else
           div(class='nav-buttons-container')
             button.login-btn: a(class='login-link' href='/users/login') Login
