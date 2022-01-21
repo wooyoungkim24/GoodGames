@@ -103,8 +103,10 @@ h2.game-title {
 .review-text{
     margin-left: 8%;
 }
-
-.stars {
+.hidden-game-id{
+    display:none;
+}
+.stars{
     position: relative;
     float: left;
     font-size: 2rem;
