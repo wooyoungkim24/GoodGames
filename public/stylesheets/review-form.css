@@ -44,10 +44,10 @@ input,select,textarea{
 }
 
 button.submit{
-    background-color: #F4F1EA;
+    background-color: #3b4042;
     cursor: pointer;
     border-radius: 5px;
-    width:50px;
+    width:70px;
     height: 30px;
 }
 .review-title{

@@ -4,7 +4,7 @@ body{
     background-color: white;
 }
 .log-in-container{
-    width: 382px;
+    width: 700px;
     overflow: hidden;
     margin: 50px 50px;
     padding: 80px;
@@ -14,23 +14,29 @@ body{
 
 h2{
     text-align: center;
-    /* color: #e41f11; */
+    color: black;
+
     padding: 20px;
 }
 
 .emailDiv{
     display: flex;
     justify-content: flex-start;
+    gap: 10px;
+    padding: 10px;
 }
 
 .passwordDiv{
     display: flex;
     justify-content: flex-start;
+    gap: 46px;
+    padding: 10px;
 }
 
 label{
-    /* color: black; */
+    color: black;
     font-size: 17px;
+
 }
 
 #email{
@@ -39,6 +45,8 @@ label{
     border: none;
     border-radius: 3px;
     padding-left: 8px;
+    color: black;
+
 }
 
 #password{
@@ -47,4 +55,12 @@ label{
     border: none;
     border-radius: 3px;
     padding-left: 8px;
+    color: black;
+
+}
+.log-in-form button{
+    background-color: #3b4042;
+}
+.log-in-container a{
+    color: black;
 }
