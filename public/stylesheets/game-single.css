@@ -25,26 +25,26 @@
 #collection-select {
     margin: 0 0.25rem 0;
 }
-
+/*
 #collection-label {
     font-family: Arial, Helvetica, sans-serif;
-}
+} */
 
 select {
-    background-color: black;
+    background-color: #3b4042;
     color: white;
     border: 1px solid white;
     border-radius: 4px;
     height: 1.5rem;
 }
 
-.game-title, .game-details {
-    /* color: white; */
-}
+/* .game-title, .game-details {
+    color: white;
+} */
 
-.game-details {
+/* .game-details {
     font-family: Arial, Helvetica, sans-serif;
-}
+} */
 
 .detail {
     box-sizing: border-box;
@@ -62,7 +62,7 @@ select {
 }
 
 h2.game-title {
-    font-family: Arial, Helvetica, sans-serif;
+    /* font-family: Arial, Helvetica, sans-serif; */
     margin: 2rem 0 0.5rem;
     font-size: 2rem;
     text-align: left;
@@ -75,7 +75,7 @@ h2.game-title {
 
 .rating {
     font-size: 1rem;
-    font-family: Arial, Helvetica, sans-serif;
+    /* font-family: Arial, Helvetica, sans-serif; */
     display: flex;
     align-items: center;
     margin: 0 1rem 0;
@@ -84,7 +84,7 @@ h2.game-title {
 
 .individual-review{
     width: 40%;
-    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    /* font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif; */
     font-size: 14px;
 }
 .review-container{
@@ -95,10 +95,10 @@ h2.game-title {
 .review-content{
     text-align:left;
 }
-.review-header{
+/* .review-header{
     color: black;
     font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
+} */
 .review-text{
     margin-left: 8%;
 }

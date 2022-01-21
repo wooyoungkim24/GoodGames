@@ -14,7 +14,7 @@ body{
 
 h2{
     text-align: center;
-    color: #e41f11;
+    /* color: #e41f11; */
     padding: 20px;
 }
 
@@ -29,7 +29,7 @@ h2{
 }
 
 label{
-    color: black;
+    /* color: black; */
     font-size: 17px;
 }
 

@@ -1,11 +1,35 @@
+*{
+    font-family: "Merriweather", "Georgia", serif;
+    color: white;
+}
+
+.logout-button{
+    background-color: #3b4042;
+}
+.nav-bar{
+    background-color: #3b4042;
+    border-bottom: none;
+}
+
+body{
+    background-color: #3b4042;
+
+}
 
 h1{
     text-align: center;
+    font-size: 40px;
+    font-family: "Merriweather", "Georgia", serif;
+
 }
 
+#collection-link{
+    font-size: 32px;
+}
 h2{
     padding: 0px;
-    font-size: 2em;
+    font-size: 25px;
+    font-family: "Merriweather", "Georgia", serif;
 }
 
 .collections-container{
