@@ -12,23 +12,22 @@ block content
                     option(value='') --Add to collection--
                     each collection in collections
                         option(value=collection selected=(collection === body.collection))= collection
-            div(class='select-rating')
-                span(class="star-rating") ☆
-                span(class="star-rating") ☆
-                span(class="star-rating") ☆
-                span(class="star-rating") ☆
-                span(class="star-rating") ☆
         div(class='name-details-container')
             h2(class='game-title')= game.title
             div(class='game-details')
-                div(class="rating-container")
-                    span(class="static-star") &#9733;
-                    span(class="static-star") &#9733;
-                    span(class="static-star") &#9733;
-                    span(class="static-star") &#9733;
-                    span(class="static-star") &#9733;
-                    div(class='rating')= game.rating
-                        a(class="reviews-link" href=`/games/${game.id}/reviews/create`) Write a Review
+                div(class='all-ratings-container')
+                    div(class="avg-rating-container")
+                        div(class="stars"): div(class="percent" style=`width: ${100*avgRating/5}%;`)
+                        if avgRating
+                            div(class='rating')= `Gamers rated this game ${avgRating} stars!`
+                        else
+                            div(class='rating')= 'No ratings yet :('
+                            //- a(class="reviews-link personal-rating" href=`/games/${game.id}/reviews/create`) Rate this game!
+                    div(class="personal-rating-container")
+                        if personalRating
+                            a(class="personal-review-link personal-rating" href=`#${email}-review`) Your Review
+                        else
+                            a(class="reviews-link personal-rating" href=`/games/${game.id}/reviews/create`) Rate this game!
                 div(class="detail publisher")= `Publisher: ${game.publisher}`
                 div(class="detail release-date")= `Released ${game.yearOfRelease}`
                 div(class="detail genre")= game.genre
@@ -38,7 +37,7 @@ block content
     div(class="review-container")
         h2(class="review-header")= "Reviews"
         each review in reviews
-            div(class="individual-review")
+            div(class="individual-review" id=`${email}-review`)
                 h3(class="review-content") #{review.User.email} rated it: #{review.rating}/5
                 span(class="review-content") #{review.User.email} has added this game to their:!{' '}
                 each collection in collectionItems
@@ -48,10 +47,3 @@ block content
                 h3(class="review-content") "#{review.title}"
                 div(class="review-text")
                     p(class="review-content") #{review.reviewText}
-    //- script(src="/javascripts/game-single.js")
-
-    //- each review in reviews
-    //-     h3= review.title
-    //-     div= review.rating
-    //-     div= review.name
-    //-     p= review.description

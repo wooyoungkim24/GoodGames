@@ -82,46 +82,6 @@ h2.game-title {
     /* height: 28px; */
 }
 
-.static-star {
-    /* cursor: pointer; */
-    color: black;
-    display: inline-block;
-    font-size: 2rem;
-    /* background-size: 25px; */
-}
-
-.select-rating {
-    unicode-bidi: bidi-override;
-    direction: rtl;
-    display: flex;
-    justify-content: center;
-}
-.select-rating > span {
-    display: inline-block;
-    position: relative;
-    /* width: 1rem; */
-}
-.star-rating {
-    font-size: 2rem;
-    cursor: pointer;
-}
-
-.select-rating > span:hover:before,
-.select-rating > span:hover ~ span:before {
-    content: "\2605";
-    position: absolute;
-}
-
-/* .star {
-    cursor: pointer;
-    background-repeat: no-repeat;
-    display: inline-block;
-    height: 28px;
-    width: 28px;
-    font-size: 0;
-    background-size: 25px;
-} */
-
 .individual-review{
     width: 40%;
     font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -141,4 +101,51 @@ h2.game-title {
 }
 .review-text{
     margin-left: 8%;
+}
+
+.stars {
+    position: relative;
+    float: left;
+    font-size: 2rem;
+	height: 1em;
+    line-height: 1em;
+}
+
+.stars:before {
+    content: "\2606\2606\2606\2606\2606";
+    float: left;
+    z-index: 1;
+}
+
+.stars .percent {
+    position: absolute;
+    left: 0;
+    float: left;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.stars .percent:after {
+    content: "\2605\2605\2605\2605\2605";
+    color: rgb(0, 0, 0);
+}
+
+.personal-rating {
+    margin: 0.5rem 0 0.5rem;
+}
+
+.avg-rating-container {
+    display: flex;
+    align-items: center;
+}
+
+.personal-rating-container {
+    display: flex;
+    align-items: center;
+}
+
+.all-ratings-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 1rem;
 }
