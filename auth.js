@@ -36,12 +36,12 @@ const requireAuth = (req,res,next) =>{
     return next();
 }
 
-
 const logoutUser = (req,res) =>{
     delete req.session.auth;
 };
 
 module.exports = {
+
     loginUser,
     restoreUser,
     requireAuth,

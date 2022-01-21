@@ -6,14 +6,59 @@ block content
     div(class="game-container")
         div(class="img-rate-coll-container")
             img(class='game-img' src=game.imgLink)
-            div(class='collection-container')
-                label(id="collection-label" for="collection") Collection
-                select(id="collection-select" name="collection" value=body.collection)
-                    option(value='') --Add to collection--
-                    each collection in collections
-                        option(value=collection selected=(collection === body.collection))= collection
+            if locals.authenticated
+                div(class='collection-container')
+                    - let userCollectedsCheck = userCollecteds.length
+                    if userCollectedsCheck
+                        - let collectionsArray = userCollecteds.map(ele =>ele.Collection.userId)
+                        - let boolean = collectionsArray.includes(userId)
+
+                        if boolean
+                            - const nameForForm = collectionItems[collectionId+1].name
+                            form(class='collection-modify' action=`/collections/update` method='post')
+                                //- input(type="hidden" name="_csrf" value=csrfToken)
+                                input(type="hidden" name="collectionId" value=collectionId)
+                                input(type="hidden" name="gameId" value=game.id)
+                                label(id="collection-label" for="collection") Collection
+                                select(id="collection-select" name="collection" value=body.collection)
+                                    option(value='') --Add to collection--
+                                    each collection in collections
+                                        - let secondBoolean = collection === nameForForm
+                                        if secondBoolean
+                                            option(id="remove" value=collection selected=(collection === body.collection))= collection
+                                        else
+                                            option(value=collection selected=(collection === body.collection))= collection
+                                button(type='submit' class="submit") Replace
+                        else
+                            form(class='collection-add' action=`/collections/add` method='post')
+                                input(type="hidden" name="collectionId" value=collectionId)
+                                input(type="hidden" name="gameId" value=game.id)
+                                label(id="collection-label" for="collection") Collection
+                                select(id="collection-select" name="collection" value=body.collection)
+                                    option(value='') --Add to collection--
+                                    each collection in collections
+                                        option(value=collection selected=(collection === body.collection))= collection
+                                button(type='submit' class="submit") Add
+                    else
+                        form(class='collection-add' action=`/collections/add` method='post')
+                            input(type="hidden" name="collectionId" value=collectionId)
+                            input(type="hidden" name="gameId" value=game.id)
+                            label(id="collection-label" for="collection") Collection
+                            select(id="collection-select" name="collection" value=body.collection)
+                                option(value='') --Add to collection--
+                                each collection in collections
+                                    option(value=collection selected=(collection === body.collection))= collection
+                            button(type='submit' class="submit") Add
+            //- else
+            //- div(class='select-rating')
+            //-     span(class="star-rating") ☆
+            //-     span(class="star-rating") ☆
+            //-     span(class="star-rating") ☆
+            //-     span(class="star-rating") ☆
+            //-     span(class="star-rating") ☆
         div(class='name-details-container')
             h2(class='game-title')= game.title
+            div(class='hidden-game-id')= game.id
             div(class='game-details')
                 div(class='all-ratings-container')
                     div(class="avg-rating-container")
@@ -47,3 +92,12 @@ block content
                 h3(class="review-content") "#{review.title}"
                 div(class="review-text")
                     p(class="review-content") #{review.reviewText}
+    if locals.authenticated
+
+        script(src="/javascripts/game-single.js")
+
+    //- each review in reviews
+    //-     h3= review.title
+    //-     div= review.rating
+    //-     div= review.name
+    //-     p= review.description
