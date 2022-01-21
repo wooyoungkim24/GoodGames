@@ -49,3 +49,7 @@ img {
 img:hover{
     transform: scale(1.05);
 }
+
+#game-title{
+    color: white;
+}
