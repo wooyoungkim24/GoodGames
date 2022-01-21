@@ -3,6 +3,7 @@ include utils.pug
 
 block content
     h1= userCollection.name
-    each collected in userCollected
-        h2= collected.Game.title
-        img(src=collected.Game.imgLink)
+    div(class='collections-container')
+        each collected in userCollected
+            h2(id='game-title')= collected.Game.title
+            img(src=collected.Game.imgLink)
