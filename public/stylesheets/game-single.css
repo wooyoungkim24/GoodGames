@@ -68,6 +68,9 @@ h2.game-title {
     text-align: left;
     color: white;
 }
+h2.review-header{
+    color: white;
+}
 
 .rating-container {
     display: flex;
