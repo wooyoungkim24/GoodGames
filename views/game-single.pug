@@ -12,23 +12,22 @@ block content
                     option(value='') --Add to collection--
                     each collection in collections
                         option(value=collection selected=(collection === body.collection))= collection
-            div(class='select-rating')
-                span(class="star-rating") ☆
-                span(class="star-rating") ☆
-                span(class="star-rating") ☆
-                span(class="star-rating") ☆
-                span(class="star-rating") ☆
         div(class='name-details-container')
             h2(class='game-title')= game.title
             div(class='game-details')
-                div(class="rating-container")
-                    span(class="static-star") &#9733;
-                    span(class="static-star") &#9733;
-                    span(class="static-star") &#9733;
-                    span(class="static-star") &#9733;
-                    span(class="static-star") &#9733;
-                    div(class='rating')= game.rating
-                        a(class="reviews-link" href=`/games/${game.id}/reviews/create`) Write a Review
+                div(class='all-ratings-container')
+                    div(class="avg-rating-container")
+                        div(class="stars"): div(class="percent" style=`width: ${100*avgRating/5}%;`)
+                        if avgRating
+                            div(class='rating')= `Gamers rated this game ${avgRating} stars!`
+                        else
+                            div(class='rating')= 'No ratings yet :('
+                    div(class="personal-rating-container")
+                        div(class="stars"): div(class="percent" style=`width: ${100*personalRating/5}%;`)
+                        if personalRating
+                            div(class="personal-rating")=`You rated this game ${personalRating} stars!`
+                        else
+                            a(class="reviews-link personal-rating" href=`/games/${game.id}/reviews/create`) Rate this game!
                 div(class="detail publisher")= `Publisher: ${game.publisher}`
                 div(class="detail release-date")= `Released ${game.yearOfRelease}`
                 div(class="detail genre")= game.genre
