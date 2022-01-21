@@ -142,3 +142,6 @@ h2.game-title {
 .review-text{
     margin-left: 8%;
 }
+.hidden-game-id{
+    display:none;
+}
