@@ -107,7 +107,7 @@ h2.game-title {
     position: relative;
     float: left;
     font-size: 2rem;
-	  height: 1em;
+	height: 1em;
     line-height: 1em;
 }
 
@@ -131,7 +131,7 @@ h2.game-title {
 }
 
 .personal-rating {
-    margin: 0 1rem 0;
+    margin: 0.5rem 0 0.5rem;
 }
 
 .avg-rating-container {
@@ -147,4 +147,5 @@ h2.game-title {
 .all-ratings-container {
     display: flex;
     flex-direction: column;
+    margin: 0 0 1rem;
 }

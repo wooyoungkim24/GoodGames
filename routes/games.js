@@ -13,7 +13,7 @@ const getAvgRating = (reviews) => {
     for(const review of reviews){
         avgRating += review.rating / reviews.length;
     }
-    return avgRating;
+    return avgRating.toFixed(1);
 };
 
 router.get('/', (req,res) =>{
@@ -38,7 +38,7 @@ router.get('/games/:id(\\d+)', asyncHandler(async(req,res) =>{
 
     const gameId = parseInt(req.params.id, 10);
     const game = await db.Game.findByPk(gameId)
-    const reviews = await db.Review.findAll({where:{gameId:gameId}, include:"User"})
+    const reviews = await db.Review.findAll({where:{gameId:gameId}, include:"User", order: [['id', 'DESC']]})
     const collectionItems = await db.Collection.findAll();
     const avgRating = getAvgRating(reviews);
 
