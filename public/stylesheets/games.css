@@ -34,17 +34,17 @@
 
 
 .pub{
-    font-family: Copernicus, "Libre Baskerville", Georgia, serif;
-    font-size:20px
+    /* font-family: Copernicus, "Libre Baskerville", Georgia, serif; */
+    font-size:18px
 }
 .yOR{
-    font-family: "Copernicus", "Libre Baskerville", Georgia, serif;
-    font-size:20px;
+    /* font-family: "Copernicus", "Libre Baskerville", Georgia, serif; */
+    font-size:18px;
     margin-bottom: 3px;
 }
 
 .gameTitle{
-    font-family: "Copernicus", "Libre Baskerville", Georgia, serif;
+    /* font-family: "Copernicus", "Libre Baskerville", Georgia, serif; */
     font-size: 22px;
     font-weight: bold;
     height: 30px;
@@ -53,10 +53,10 @@
 }
 .gameTitleLink{
     text-decoration: none;
-    color: black;
+    /* color: black; */
 }
 .headerGames{
-    font-family: "Copernicus", "Libre Baskerville", Georgia, serif;
+    /* font-family: "Copernicus", "Libre Baskerville", Georgia, serif; */
     display: flex;
     justify-content: center;
 }
