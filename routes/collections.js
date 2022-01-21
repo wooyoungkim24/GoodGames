@@ -53,12 +53,18 @@ router.get('/:id(\\d+)', requireAuth, asyncHandler(async(req, res, next) =>{
     const collectionsId = parseInt(url.split('/')[2]);
     const userId = req.session.auth.userId;
 
+    let email = '';
+    if(req.session.auth){
+        email = await getUserEmail(userId);
+    }
+
     const userCollection = await db.Collection.findByPk(collectionsId);
     if (userId !== userCollection.userId) {
         next(createError(403));
     }
     const userCollected = await db.Collected.findAll({where: {collectionsId: userCollection.id}, include: 'Game'});
     res.render('collection-page', {
+        email,
         userCollection,
         userCollected
     })
