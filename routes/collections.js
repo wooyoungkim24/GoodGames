@@ -1,7 +1,7 @@
 const express = require('express');
 const createError = require('http-errors');
 const db = require('../db/models');
-const { csrfProtection, asyncHandler } = require('./utils');
+const { csrfProtection, asyncHandler, getUserEmail } = require('./utils');
 const { requireAuth } = require('../auth');
 
 
@@ -9,6 +9,11 @@ const { requireAuth } = require('../auth');
 const router = express.Router();
 
 router.get('/', asyncHandler(async(req,res) =>{
+    let email = '';
+    if(req.session.auth){
+        email = await getUserEmail(req.session.auth.userId);
+    }
+
     const collectionsPast = await db.Collection.findAll( { where: { userId: req.session.auth.userId, name: 'Have Played'} });
     const collectionsFuture = await db.Collection.findAll( { where: { userId: req.session.auth.userId, name: 'Want to Play'} });
     const collectionsPresent = await db.Collection.findAll( { where: { userId: req.session.auth.userId, name: 'Currently Playing'} });
@@ -31,6 +36,7 @@ router.get('/', asyncHandler(async(req,res) =>{
             include: 'Game',
         } );
     res.render('collections-list', {
+        email,
         collectionsPast,
         collectionsFuture,
         collectionsPresent,

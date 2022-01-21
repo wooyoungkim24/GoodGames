@@ -1,7 +1,7 @@
 const express = require("express");
 const { check, validationResult } = require("express-validator");
 
-const { csrfProtection, asyncHandler } = require('./utils');
+const { csrfProtection, asyncHandler, getUserEmail } = require('./utils');
 const { requireAuth } = require("../auth");
 const db = require('../db/models');
 
@@ -22,12 +22,16 @@ const reviewValidation = [
 ];
 
 router.get('/create', csrfProtection, asyncHandler(async(req, res, next) => {
+    let email = '';
+    if(req.session.auth){
+        email = await getUserEmail(req.session.auth.userId);
+    }
     const url = req.baseUrl;
     const gameId = parseInt(url.split('/')[2]);
     const game = await db.Game.findByPk(gameId);
     console.log(game.id);
 
-    res.render('create-review', {game, csrfToken: req.csrfToken()});
+    res.render('create-review', {game, email, csrfToken: req.csrfToken()});
 }));
 
 router.post('/', reviewValidation, requireAuth, csrfProtection, asyncHandler(async (req, res, next) => {
