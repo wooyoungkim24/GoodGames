@@ -14,9 +14,9 @@ module.exports = {
       Example:
       */
    return queryInterface.bulkInsert('Games', [
-     {title: "Dark Souls 3", description: darkSouls3Desc, genre:"Souls-Like", publisher: "FromSoftware, Inc.", yearOfRelease: 2016, imgLink: darkSoulsImgLink, createdAt: new Date(),updatedAt: new Date()},
+     {title: "Dark Souls 3", description: darkSouls3Desc, genre:"Souls-Like", publisher: "FromSoftware Inc.", yearOfRelease: 2016, imgLink: darkSoulsImgLink, createdAt: new Date(),updatedAt: new Date()},
      {title: "Red Dead Redemption 2", description: redDeadDesc, genre:"Open World Adventure", publisher: "Rockstar Games", yearOfRelease: 2019, imgLink: redDeadImgLink, createdAt: new Date(),updatedAt: new Date()},
-     {title: "Monster Hunter Rise", description: mHRDesc, genre:"Action", publisher: "CAPCOM CO., Ltd.", yearOfRelease: 2022, imgLink: mHRImgLink, createdAt: new Date(),updatedAt: new Date()},
+     {title: "Monster Hunter Rise", description: mHRDesc, genre:"Action", publisher: "CAPCOM CO. Ltd.", yearOfRelease: 2022, imgLink: mHRImgLink, createdAt: new Date(),updatedAt: new Date()},
    ],{});
   },
 
