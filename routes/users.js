@@ -126,7 +126,6 @@ router.post('/signup', csrfProtection, signupValidator,
     if (validatorErrors.isEmpty()) {
       const hashedPassword = await bcrypt.hash(password, 10);
       user.hashedPassword = hashedPassword;
-      console.log("test")
       await user.save();
       loginUser(req, res, user);
       res.redirect('/');

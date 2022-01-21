@@ -1,5 +1,7 @@
 const express = require('express');
 const createError = require('http-errors');
+const { check, validationResult } = require('express-validator');
+
 const db = require('../db/models');
 const { csrfProtection, asyncHandler, getUserEmail } = require('./utils');
 const { requireAuth } = require('../auth');
@@ -7,6 +9,17 @@ const { requireAuth } = require('../auth');
 
 
 const router = express.Router();
+
+const collectionValidator = [
+    check('collection')
+        .custom((value) => {
+            // console.log('value; ', value);
+            if(value === '--Add to collection--' || value === ''){
+                throw new Error('Please choose a collection');
+            }
+            return true;
+        })
+];
 
 router.get('/', asyncHandler(async(req,res) =>{
     let email = '';
@@ -71,46 +84,54 @@ router.get('/:id(\\d+)', requireAuth, asyncHandler(async(req, res, next) =>{
 }))
 
 
-router.post('/update',requireAuth, asyncHandler(async(req, res,next) =>{
+router.post('/update',requireAuth, collectionValidator, asyncHandler(async(req, res,next) =>{
     // const url = req.originalUrl;
     // const collectionsId = parseInt(url.split('/')[2]);
 
     const userId = req.session.auth.userId;
 
     const { gameId,collection, collectionId } = req.body;
-    console.log(collectionId)
-    const collectedToReplaceTo = await db.Collected.findOne({where:{collectionsId:collectionId}});
-    const replacer = await db.Collection.findOne({where:{name:collection, userId}})
-    // console.log(replacer)
-    // console.log(collectionId)
-    // await collectedReplace.update({})
-    await collectedToReplaceTo.update({collectionsId:replacer.id})
-    res.redirect(`/games/${gameId}`)
+    const validatorErrors = validationResult(req);
+
+    if(!validatorErrors.isEmpty()){
+        res.redirect(`/games/${gameId}`)
+    }
+    else{
+        const collectedToReplaceTo = await db.Collected.findOne({where:{collectionsId:collectionId}});
+        const replacer = await db.Collection.findOne({where:{name:collection, userId}})
+        // console.log(replacer)
+        // console.log(collectionId)
+        // await collectedReplace.update({})
+        await collectedToReplaceTo.update({collectionsId:replacer.id})
+        res.redirect(`/games/${gameId}`)
+    }
 
 }))
 
-router.post('/add', requireAuth,
+router.post('/add', requireAuth, collectionValidator,
   asyncHandler(async (req, res) => {
     let userId= req.session.auth.userId
+
     const {
       collection,
       gameId
     } = req.body;
-    const findId = await db.Collection.findOne({where:{name:collection, userId}})
+    const validatorErrors = validationResult(req);
+    if(!validatorErrors.isEmpty()){
+        res.redirect(`/games/${gameId}`)
+    }
+    else{
+        const findId = await db.Collection.findOne({where:{name:collection, userId}})
 
-    const newCollected = db.Collected.build({
-      collectionsId:findId.id,
-      gameId
-    });
+        const newCollected = db.Collected.build({
+            collectionsId:findId.id,
+            gameId
+        });
 
-    // const validatorErrors = validationResult(req);
+        await newCollected.save();
 
-    await newCollected.save();
-
-    res.redirect(`/games/${gameId}`)
-
-
-
+        res.redirect(`/games/${gameId}`)
+    }
   }));
 
 
