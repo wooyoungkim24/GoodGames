@@ -3,7 +3,7 @@ const express = require('express');
 
 
 const db = require('../db/models');
-const { csrfProtection, asyncHandler } = require('./utils');
+const { csrfProtection, asyncHandler, getUserEmail } = require('./utils');
 const { requireAuth } = require('../auth');
 
 const router = express.Router();
@@ -12,20 +12,32 @@ router.get('/', (req,res) =>{
 })
 
 router.get('/games', asyncHandler(async(req,res) =>{
+    let email = '';
+    if(req.session.auth){
+        email = await getUserEmail(req.session.auth.userId);
+    }
+
     const games = await db.Game.findAll();
     res.render('games', {
+        email,
         games,
         title: "Games"
     })
 }))
 
 router.get('/games/:id(\\d+)', asyncHandler(async(req,res) =>{
+    let email = '';
+    if(req.session.auth){
+        email = await getUserEmail(req.session.auth.userId);
+    }
+
     const gameId = parseInt(req.params.id, 10);
     const game = await db.Game.findByPk(gameId)
     const reviews = await db.Review.findAll({where:{gameId:gameId}, include:"User"})
     const collectionItems = await db.Collection.findAll();
 
     res.render('game-single', {
+        email,
         game,
         reviews,
         collectionItems,

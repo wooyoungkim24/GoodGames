@@ -11,9 +11,11 @@ html
       div(class='nav-bar')
         a(class='home-logo' href='/') GG
         if locals.authenticated
-          span Welcome #{email}!
-          form(action='/users/logout' method='post')
-            button(class='logout-button' type='submit') Logout
+          span.user-greeting Welcome #{email}!
+          div.user-btns-container
+            button.collections-btn: a(class='collections-link' href='/collections') My Collections
+            form(action='/users/logout' method='post')
+              button(class='logout-button' type='submit') Logout
         else
           div(class='nav-buttons-container')
             button.login-btn: a(class='login-link' href='/users/login') Login
