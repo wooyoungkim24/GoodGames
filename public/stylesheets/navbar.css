@@ -9,12 +9,12 @@ body{
     align-items: center;
     height: 4rem;
     background-color: white;
-    width: 100%;
+    width: 95%;
     border-bottom: 1px solid white;
   }
 
   .home-logo {
-    color: black;
+    color: white;
     font-size: 3rem;
     margin: 1rem;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
