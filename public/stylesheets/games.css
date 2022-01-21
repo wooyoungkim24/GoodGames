@@ -19,13 +19,14 @@
     flex-wrap: wrap;
     justify-content: space-around;
     gap: 0px;
+    padding: 0px 10px 0px;
 }
 
 .games-container > div{
     width: 400px;
     margin-left: 3px;
     margin-right: 3px;
-
+    margin-bottom: 20px;
 }
 .description{
     height: 90px;
@@ -45,10 +46,10 @@
 
 .gameTitle{
     /* font-family: "Copernicus", "Libre Baskerville", Georgia, serif; */
-    font-size: 22px;
+    font-size: 18px;
     font-weight: bold;
-    height: 30px;
-    margin-top: 7px;
+    height: 20px;
+    margin-top: 10px;
     margin-bottom: 5px;
 }
 .gameTitleLink{
@@ -59,4 +60,8 @@
     /* font-family: "Copernicus", "Libre Baskerville", Georgia, serif; */
     display: flex;
     justify-content: center;
+}
+
+.game-image {
+    margin-bottom: 0px;
 }
