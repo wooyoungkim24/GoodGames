@@ -16,7 +16,7 @@ html
           span.user-greeting Welcome #{email}!
           div.user-btns-container
             button.collections-btn: a(class='collections-link' href='/collections') My Collections
-            form(action='/users/logout' method='post')
+            form(action='/users/logout' id="logout-btn-container" method='post')
               button(class='logout-button' type='submit') Logout
         else
           div(class='nav-buttons-container')
