@@ -53,7 +53,6 @@ const loginValidators = [
     .withMessage('Please provide a value for Password'),
 ];
 
-
 /* GET users listing. */
 router.get('/', (req, res, next) => {
   res.send('respond with a resource');
@@ -131,7 +130,9 @@ router.post('/signup', csrfProtection, signupValidator,
       const hashedPassword = await bcrypt.hash(password, 10);
       user.hashedPassword = hashedPassword;
       await user.save();
+
       collectionCreator(user.id);
+
       loginUser(req, res, user);
       res.redirect('/');
     } else {
