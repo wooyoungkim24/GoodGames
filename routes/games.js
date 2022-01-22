@@ -67,18 +67,36 @@ router.get('/games/:id(\\d+)', asyncHandler(async (req, res) => {
         email = await getUserEmail(req.session.auth.userId);
         userId = req.session.auth.userId
         let i = 0;
-        if(userCollecteds.length >0){
-            while(test === false){
+        if (userCollecteds.length > 0) {
+            // while (test === false) {
 
-                let finder= await db.Collection.findByPk(userCollectedsCollections[i]);
-                if (finder.userId === req.session.auth.userId){
-                    collectionId = finder.id;
-                    test = true;
-                }else{
-                    i++;
+            //     let finder = await db.Collection.findByPk(userCollectedsCollections[i]);
+            //     if (finder) {
+            //         if (finder.userId === req.session.auth.userId) {
+            //             collectionId = finder.id;
+            //             test = true;
+            //         }
+            //     } else {
+            //         i++;
+            //     }
+            // }
+            let finder = await db.Collection.findAll({where: {userId}})
+            let idMap = finder.map(ele =>ele.id)
+            // console.log(idMap)
+            for(let i = 0; i < idMap.length; i ++){
+                // console.log(idMap[i])
+                let collectedFinder = await db.Collected.findOne({where:{gameId, collectionsId:idMap[i]}})
+                // console.log(collectedFinder)
+                if(collectedFinder){
+
+                    collectionId = collectedFinder.collectionsId
+
                 }
             }
+
+
         }
+
 
     }
     res.render('game-single', {

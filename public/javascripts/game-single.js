@@ -4,7 +4,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     try {
 
         const option = document.querySelector("#remove")
-        option.remove();
+        if(option){
+            option.remove();
+        }
+
 
     } catch (e) {
         console.error(e);
