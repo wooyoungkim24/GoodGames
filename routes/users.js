@@ -53,12 +53,6 @@ const loginValidators = [
     .withMessage('Please provide a value for Password'),
 ];
 
-const collectionCreator = asyncHandler(async(userId) => {
-  const havePlayed = await db.Collection.create({name: 'Have Played', userId});
-  const currentlyPlaying = await db.Collection.create({name: 'Currently Playing', userId});
-  const wantToPlay = await db.Collection.create({name: 'Want to Play', userId});
-});
-
 /* GET users listing. */
 router.get('/', (req, res, next) => {
   res.send('respond with a resource');
