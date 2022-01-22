@@ -1,11 +1,14 @@
 .review-header-form{
-    margin-left:38%;
+    margin-left:28%;
+    margin-top:3%;
+    font-size: 20px;
+    margin-bottom:10px;
 }
 
 .review-form-div{
     display:flex;
     width: 50%;
-    margin-left:38%;
+    margin-left:28%;
     flex-direction: column;
     justify-content: space-around;
     font-family: "Merriweather", "Georgia", serif;
@@ -54,4 +57,21 @@ button.submit{
     display:flex;
     flex-direction:column;
 
+}
+
+.review-total{
+    display:flex;
+    flex-direction: column;
+}
+#reviewTitle,
+#review-rating,
+#reviewText{
+    color:black;
+}
+#review-rating option{
+    color:black;
+}
+
+.review-total label{
+    color:white;
 }
