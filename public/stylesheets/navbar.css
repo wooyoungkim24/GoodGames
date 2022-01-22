@@ -29,6 +29,7 @@ body{
 
   .user-btns-container {
     display: flex;
+    align-items: center;
     justify-content: space-between;
   }
 
@@ -43,6 +44,10 @@ body{
     color: white;
   }
 
+  .collections-link{
+    white-space: nowrap;
+  }
+
   .login-btn,
   .signup-btn,
   .logout-button,
@@ -50,7 +55,16 @@ body{
     border: 1px solid white;
     background-color: #3b4042;
     border-radius: 0.5rem;
-    height: auto;
+    height: 2.5rem;
     margin: 0.2rem;
     cursor: pointer;
+  }
+
+  #logout-btn-container {
+    margin: 0;
+  }
+
+  .user-btns-container {
+    display: flex;
+    align-items: center;
   }
