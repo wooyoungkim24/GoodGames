@@ -12,7 +12,7 @@ block content
       input(type='hidden' name='_csrf' value=csrfToken)
       +field('Email', 'email', email, 'email', 'Enter email', 'emailDiv')
       +field('Password', 'password', null, 'password', 'Enter password', 'sign-up-passwordDiv')
-      +field('Confirm Password', 'confirmPassword', null, 'confirmPassword', 'Confirm Password', 'confirm-passwordDiv')
+      +field('Confirm Password', 'confirmPassword', null, 'password', 'Confirm Password', 'confirm-passwordDiv')
       div(class='sign-up-buttons')
         button(type='submit') Sign Up
         a(href='/' id='cancel') Cancel

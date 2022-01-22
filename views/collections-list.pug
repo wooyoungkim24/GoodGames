@@ -9,7 +9,8 @@ include utils.pug
             a(href=`/collections/${collection.id}` id='collection-link')=collection.name
         each collected in userCollectedPast
           h2(id='game-title')=collected.Game.title
-          img(id='game-img' src=collected.Game.imgLink)
+          a(href=`/games/${collected.Game.id}`)
+            img(id='game-img' src=collected.Game.imgLink)
 
       div(class='collections-container')
         each collection in collectionsFuture
@@ -19,7 +20,8 @@ include utils.pug
         each collected in userCollectedFuture
           div(id='game-container')
             h2(id='game-title')=collected.Game.title
-            img(id='game-img' src=collected.Game.imgLink)
+            a(href=`/games/${collected.Game.id}`)
+              img(id='game-img' src=collected.Game.imgLink)
 
       div(class='collections-container')
         each collection in collectionsPresent
@@ -29,4 +31,5 @@ include utils.pug
         each collected in userCollectedPresent
           div(id='game-container')
             h2(id='game-title')=collected.Game.title
-            img(id='game-img' src=collected.Game.imgLink)
+            a(href=`/games/${collected.Game.id}`)
+              img(id='game-img' src=collected.Game.imgLink)

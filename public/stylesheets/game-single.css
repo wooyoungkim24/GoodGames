@@ -11,7 +11,9 @@
     margin: 2rem;
     /* color: white; */
 }
-
+img.game-img{
+    transform: none;
+}
 .collection-container,
 .select-rating {
     margin-top: 0.5rem;
