@@ -68,9 +68,10 @@ router.get('/games/:id(\\d+)', asyncHandler(async (req, res) => {
         userId = req.session.auth.userId
         let i = 0;
         if(userCollecteds.length >0){
-            while(test === false){
+            while(test === false && userCollectedsCollections.length >= i + 1){
 
                 let finder= await db.Collection.findByPk(userCollectedsCollections[i]);
+                console.log(finder);
                 if (finder.userId === req.session.auth.userId){
                     collectionId = finder.id;
                     test = true;
