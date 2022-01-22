@@ -1,3 +1,5 @@
+
+
 extends layout.pug
 include utils.pug
 
@@ -8,9 +10,10 @@ include utils.pug
           h2(id='collection-name')
             a(href=`/collections/${collection.id}` id='collection-link')=collection.name
         each collected in userCollectedPast
-          h2(id='game-title')=collected.Game.title
-          a(href=`/games/${collected.Game.id}`)
-            img(id='game-img' src=collected.Game.imgLink)
+          div(id='game-container')
+            h2(id='game-title')=collected.Game.title
+            a(href=`/games/${collected.Game.id}`)
+              img(id='game-img' src=collected.Game.imgLink)
 
       div(class='collections-container')
         each collection in collectionsFuture
