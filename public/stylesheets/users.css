@@ -32,6 +32,19 @@ h2{
     gap: 46px;
     padding: 10px;
 }
+.sign-up-passwordDiv{
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px;
+    gap: 73px;
+}
+
+.confirm-passwordDiv{
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px;
+    gap: 8px;
+}
 
 label{
     color: black;
@@ -58,9 +71,36 @@ label{
     color: black;
 
 }
+#confirmPassword{
+    width: 300px;
+    height: 30px;
+    border: none;
+    border-radius: 3px;
+    padding-left: 8px;
+    color: black;
+}
 .log-in-form button{
     background-color: #3b4042;
 }
 .log-in-container a{
     color: black;
+}
+.sign-up-buttons{
+    display: flex;
+    gap: 10px
+}
+.sign-up-container{
+    width: 700px;
+    overflow: hidden;
+    margin: 50px 50px;
+    padding: 80px;
+    background: #12e4e4;
+    border-radius: 15px ;
+}
+#cancel{
+    color: black;
+}
+
+.sign-up-container .emailDiv{
+   gap: 100px;
 }
