@@ -101,13 +101,16 @@ router.post('/update',requireAuth, collectionValidator, asyncHandler(async(req, 
 
     const { gameId,collection, collectionId } = req.body;
     const validatorErrors = validationResult(req);
-
+    // console.log("this is test1")
     if(!validatorErrors.isEmpty()){
         res.redirect(`/games/${gameId}`)
     }
     else{
-        const collectedToReplaceTo = await db.Collected.findOne({where:{collectionsId:collectionId}});
+        const collectedToReplaceTo = await db.Collected.findOne({where:{collectionsId:collectionId, gameId}});
+
         const replacer = await db.Collection.findOne({where:{name:collection, userId}})
+        console.log(collectedToReplaceTo.collectionsId)
+        console.log(replacer.id)
         // console.log(replacer)
         // console.log(collectionId)
         // await collectedReplace.update({})
@@ -125,6 +128,7 @@ router.post('/add', requireAuth, collectionValidator,
       collection,
       gameId
     } = req.body;
+    // console.log("test2")
     const validatorErrors = validationResult(req);
     if(!validatorErrors.isEmpty()){
         res.redirect(`/games/${gameId}`)

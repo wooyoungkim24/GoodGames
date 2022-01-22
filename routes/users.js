@@ -113,7 +113,11 @@ router.get('/signup', csrfProtection, (req, res) => {
   });
 });
 
-
+const collectionCreator = asyncHandler(async(userId) => {
+  await db.Collection.create({name: 'Have Played', userId});
+  await db.Collection.create({name: 'Currently Playing', userId});
+  await db.Collection.create({name: 'Want to Play', userId});
+});
 
 router.post('/signup', csrfProtection, signupValidator,
   asyncHandler(async (req, res) => {
@@ -132,7 +136,9 @@ router.post('/signup', csrfProtection, signupValidator,
       const hashedPassword = await bcrypt.hash(password, 10);
       user.hashedPassword = hashedPassword;
       await user.save();
-      await collectionCreator(user.id);
+
+      collectionCreator(user.id);
+
       loginUser(req, res, user);
       res.redirect('/');
     } else {

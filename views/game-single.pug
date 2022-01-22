@@ -12,9 +12,11 @@ block content
                     if userCollectedsCheck
                         - let collectionsArray = userCollecteds.map(ele =>ele.Collection.userId)
                         - let boolean = collectionsArray.includes(userId)
+                        - console.log(collectionId)
+
 
                         if boolean
-                            - const nameForForm = collectionItems[collectionId+1].name
+                            - const nameForForm = collectionItems[collectionId-1].name
                             form(class='collection-modify' action=`/collections/update` method='post')
                                 //- input(type="hidden" name="_csrf" value=csrfToken)
                                 input(type="hidden" name="collectionId" value=collectionId)
