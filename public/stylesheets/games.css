@@ -2,7 +2,7 @@
     box-sizing: border-box;
 }
 
-.game-image{
+img.game-image{
     height:300px;
     width: 400px;
     border-radius: 10px;

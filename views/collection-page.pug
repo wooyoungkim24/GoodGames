@@ -6,4 +6,5 @@ block content
     div(class='collections-container')
         each collected in userCollected
             h2(id='game-title')= collected.Game.title
-            img(src=collected.Game.imgLink)
+            a(href=`/games/${collected.Game.id}`)
+                img(src=collected.Game.imgLink)
