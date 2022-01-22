@@ -53,6 +53,11 @@ const loginValidators = [
     .withMessage('Please provide a value for Password'),
 ];
 
+const collectionCreator = asyncHandler(async(userId) => {
+  const havePlayed = await db.Collection.create({name: 'Have Played', userId});
+  const currentlyPlaying = await db.Collection.create({name: 'Currently Playing', userId});
+  const wantToPlay = await db.Collection.create({name: 'Want to Play', userId});
+});
 
 /* GET users listing. */
 router.get('/', (req, res, next) => {
@@ -131,7 +136,9 @@ router.post('/signup', csrfProtection, signupValidator,
       const hashedPassword = await bcrypt.hash(password, 10);
       user.hashedPassword = hashedPassword;
       await user.save();
+
       collectionCreator(user.id);
+
       loginUser(req, res, user);
       res.redirect('/');
     } else {

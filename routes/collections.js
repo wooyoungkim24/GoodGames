@@ -31,23 +31,32 @@ router.get('/', asyncHandler(async(req,res) =>{
     const collectionsFuture = await db.Collection.findAll( { where: { userId: req.session.auth.userId, name: 'Want to Play'} });
     const collectionsPresent = await db.Collection.findAll( { where: { userId: req.session.auth.userId, name: 'Currently Playing'} });
 
+    let userCollectedPast = [];
+    let userCollectedFuture = [];
+    let userCollectedPresent = [];
     // copy line 11 and change to each collection title eg. 'Favorites'
-
-    const userCollectedPast = await db.Collected.findAll(
+    console.log(collectionsPast);
+    if(collectionsPast.length){
+        const userCollectedPast = await db.Collected.findAll(
         {
             where: { collectionsId: collectionsPast[0].id },
             include: 'Game',
         } );
-    const userCollectedFuture = await db.Collected.findAll(
+    }
+    if(collectionsFuture.length){
+        const userCollectedFuture = await db.Collected.findAll(
         {
             where: { collectionsId: collectionsFuture[0].id },
             include: 'Game',
         } );
-    const userCollectedPresent = await db.Collected.findAll(
+    }
+    if(collectionsPresent.length){
+        const userCollectedPresent = await db.Collected.findAll(
         {
             where: { collectionsId: collectionsPresent[0].id },
             include: 'Game',
         } );
+    }
     res.render('collections-list', {
         email,
         collectionsPast,
